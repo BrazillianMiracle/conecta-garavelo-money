@@ -3,43 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Garavelo | Seu Hub Local</title>
+    <title>Portal Garavelo: Conectando a Comunidade e o Comércio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <header class="main-header">
-        <div class="container header-flex">
-            <div class="logo">PORTAL <span>GARAVELO</span></div>
-            <nav>
+        <div class="header-content container">
+            <div class="logo">
+                <h1>PORTAL GARAVELO</h1>
+                <p>📍 Seu Hub de Compras, Serviços e Comunidade em Goiânia</p>
+            </div>
+            
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="#parceiros">Parceiros</a></li>
-                    <li><a href="#novidades">Novidades</a></li>
-                    <li><a href="#anuncie" class="btn-cta">Anuncie</a></li>
+                    <li><a href="#parceiros"><i class="fas fa-handshake"></i> Parceiros</a></li>
+                    <li><a href="#novidades"><i class="fas fa-newspaper"></i> Novidades</a></li>
+                    <li><a href="#anuncie"><i class="fas fa-bullhorn"></i> Anuncie</a></li>
+                    <li><a href="#utilidade"><i class="fas fa-users"></i> Utilidade Pública</a></li>
                 </ul>
             </nav>
+
+            <div class="user-actions">
+                <a href="#" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="#" class="btn-cadastrar"><i class="fas fa-user-plus"></i> Cadastre-se</a>
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <section class="hero">
-            <h1>Conectando o Garavelo</h1>
-            <p>Comércio, serviços e utilidade pública em um só lugar.</p>
+        
+        <!-- Hero Section de Boas-Vindas -->
+        <section class="hero-welcome">
+            <div class="hero-badge">🚀 O Maior Portal da Região</div>
+            <h2>Tudo o que acontece no Garavelo em um só clique</h2>
+            <p>Encontre os melhores comércios, fique por dentro das novidades e conecte-se com a nossa comunidade.</p>
         </section>
 
-        <section id="parceiros">
-            <h2>🥇 Parceiros Premium</h2>
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="varejo">Varejo</button>
-                <button class="filter-btn" data-filter="saude">Saúde</button>
+        <section id="parceiros" class="section-parceiros">
+            <div class="section-title-wrapper">
+                <h2>🥇 Parceiros Premium no Garavelo</h2>
+                <p class="section-description">O comércio de elite da região. Qualidade, confiança e vantagens exclusivas.</p>
             </div>
-            <div class="anuncios-grid" id="parceiros-grid"></div>
-            <div class="center"><button id="btn-carregar-mais" class="btn-primary">Ver mais parceiros</button></div>
+            
+            <div class="anuncios-grid" id="parceiros-grid">
+                <div class="anuncio-item partner" data-loja="Novo Mundo" data-categoria="varejo">
+                    <div class="anuncio-icon-wrapper">
+                        <i class="fas fa-home anuncio-icon"></i>
+                    </div>
+                    <div class="anuncio-content">
+                        <h3>Novo Mundo - Filial 16</h3>
+                        <p>A maior em eletro e móveis! <strong>Desconto de 10%</strong> em toda a linha branca para clientes Portal Garavelo.</p>
+                        <div class="card-footer-info">
+                            <span class="tag-parceiro">VAREJO GIGANTE</span>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anuncio-item partner" data-loja="Supermercado Tatico" data-categoria="alimentacao">
+                    <div class="anuncio-icon-wrapper">
+                        <i class="fas fa-shopping-basket anuncio-icon"></i>
+                    </div>
+                    <div class="anuncio-content">
+                        <h3>Supermercado Tatico</h3>
+                        <p>Sua compra completa com o preço mais baixo. Confira o nosso açougue e hortifrúti fresco todos os dias!</p>
+                        <div class="card-footer-info">
+                            <span class="tag-parceiro">COMPRA FÁCIL</span>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anuncio-item partner" data-loja="Odontocenter OrtoBom" data-categoria="saude">
+                    <div class="anuncio-icon-wrapper">
+                        <i class="fas fa-tooth anuncio-icon"></i>
+                    </div>
+                    <div class="anuncio-content">
+                        <h3>Odontocenter OrtoBom</h3>
+                        <p>Excelência em ortodontia e estética. Primeira consulta e avaliação com scanner 3D <strong>gratuita</strong>.</p>
+                        <div class="card-footer-info">
+                            <span class="tag-parceiro">SAÚDE & BEM-ESTAR</span>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carregar-mais-container">
+                <button id="btn-carregar-mais" class="btn-carregar-mais">Carregar Mais Anúncios <i class="fas fa-chevron-down"></i></button>
+            </div>
+        </section>
+
+        <div class="separator-custom"></div>
+
+        <section id="novidades" class="section-novidades">
+            <div class="section-title-wrapper">
+                <h2>🚨 Novidades Quentes na Região</h2>
+                <p class="section-description">Notícias, inaugurações e eventos que movimentam o Garavelo esta semana.</p>
+            </div>
+            
+            <div class="novidades-grid">
+                <div class="novidade-card novidade-destaque-1">
+                    <div class="novidade-header">
+                        <h3>🚀 Inauguração Tech</h3>
+                        <span class="novidade-tag">NEGÓCIOS</span>
+                    </div>
+                    <p>A <strong>Mega Eletrônicos Celulares</strong> reinaugurou com espaço *premium*. Novo laboratório de assistência técnica ultra-rápida.</p>
+                </div>
+                <div class="novidade-card novidade-destaque-2">
+                    <div class="novidade-header">
+                        <h3>🎨 Arte Local</h3>
+                        <span class="novidade-tag">CULTURA</span>
+                    </div>
+                    <p>O <strong>Art Subliminal Tattoo Estúdio</strong> comemora 5 anos com exposição de arte e flash day neste sábado. Tatuagens com 30% off.</p>
+                </div>
+                <div class="novidade-card novidade-destaque-3">
+                    <div class="novidade-header">
+                        <h3>🎓 Educação</h3>
+                        <span class="novidade-tag">OPORTUNIDADE</span>
+                    </div>
+                    <p>A <strong>Faculdade Estácio</strong> anuncia novos cursos EAD com mensalidades acessíveis para a comunidade do Garavelo.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator-custom"></div>
+
+        <section id="anuncie" class="section-anuncie">
+            <div class="section-title-wrapper">
+                <h2>📢 Leve Seu Negócio para o Próximo Nível</h2>
+                <p class="section-description">Pare de depender de panfletos. Conecte-se diretamente com clientes segmentados do Garavelo.</p>
+            </div>
+            
+            <div class="anuncie-planos">
+                <div class="plano-card">
+                    <h3>Plano PRATA</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Anúncio na lista principal</li>
+                        <li><i class="fas fa-check"></i> Destaque no Carrossel Móvel</li>
+                        <li><i class="fas fa-check"></i> Relatório Mensal de Cliques</li>
+                    </ul>
+                    <p class="valor">R$ 149,90 <small>/ Mês</small></p>
+                    <a href="#" class="btn-plano">COMECE AGORA</a>
+                </div>
+                
+                <div class="plano-card plano-gold">
+                    <div class="badge-popularem">Mais Popular</div>
+                    <h3>Plano OURO</h3>
+                    <ul>
+                        <li><i class="fas fa-star"></i> Todos os benefícios do Prata</li>
+                        <li><i class="fas fa-star"></i> <strong>Destaque Fixo</strong> na Homepage</li>
+                        <li><i class="fas fa-star"></i> 2 Posts na Utilidade Pública</li>
+                    </ul>
+                    <p class="valor">R$ 299,90 <small>/ Mês</small></p>
+                    <a href="#" class="btn-plano btn-plano-gold">QUERO SER OURO</a>
+                </div>
+                
+                <div class="plano-card">
+                    <h3>Plano FIDELIDADE</h3>
+                    <ul>
+                        <li><i class="fas fa-heart"></i> Exclusivo contratos anuais</li>
+                        <li><i class="fas fa-heart"></i> Desconto de 15% no total</li>
+                        <li><i class="fas fa-heart"></i> Consultoria de Marketing Gratuita</li>
+                    </ul>
+                    <p class="valor">R$ 1.699,00 <small>/ Ano</small></p>
+                    <a href="#" class="btn-plano">ECONOMIZE JÁ</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator-custom"></div>
+
+        <section id="utilidade" class="section-utilidade">
+            <div class="section-title-wrapper">
+                <h2>📢 Informação e Utilidade Pública</h2>
+                <p class="section-description">Conectando a população do Garavelo com vagas, cursos e serviços essenciais.</p>
+            </div>
+            
+            <div class="utilidade-grid" id="utilidade-grid">
+                <div class="utilidade-card">
+                    <div class="utilidade-top">
+                        <h3><i class="fas fa-user-tie"></i> Vagas de Emprego</h3>
+                        <span class="utilidade-tag tag-emprego">URGENTE</span>
+                    </div>
+                    <p>O <strong>Supermercado Tatico</strong> está com processo seletivo aberto para Caixas, Repositores e Açougueiros. Enviar CV até sexta!</p>
+                </div>
+                
+                <div class="utilidade-card">
+                    <div class="utilidade-top">
+                        <h3><i class="fas fa-graduation-cap"></i> Curso Gratuito</h3>
+                        <span class="utilidade-tag tag-social">SOCIAL</span>
+                    </div>
+                    <p>A Associação de Moradores do Garavelo oferece curso de Cabeleireiro Básico GRATUITO. Inscrições limitadas na sede.</p>
+                </div>
+                
+                <div class="utilidade-card">
+                    <div class="utilidade-top">
+                        <h3><i class="fas fa-syringe"></i> Campanha de Saúde</h3>
+                        <span class="utilidade-tag tag-saude">SAÚDE</span>
+                    </div>
+                    <p>Posto de Saúde da Praça da Igualdade inicia vacinação contra a Dengue para crianças de 10 a 14 anos.</p>
+                </div>
+
+                <div class="utilidade-card">
+                    <div class="utilidade-top">
+                        <h3><i class="fas fa-trophy"></i> Evento Esportivo</h3>
+                        <span class="utilidade-tag tag-evento">LAZER</span>
+                    </div>
+                    <p>Grande Final do Campeonato de Futsal do Garavelo! Domingo, 10h, no Ginásio. Leve 1kg de alimento.</p>
+                </div>
+            </div>
         </section>
     </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Portal Garavelo. Todos os direitos reservados. | Desenvolvido para a Comunidade.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
