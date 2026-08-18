@@ -3,13 +3,589 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Garavelo: Conectando a Comunidade e o Comércio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Portal Garavelo: Seu Hub de Compras, Serviços, Novidades e Utilidade Pública no Coração de Goiânia.">
+    <title>Portal Garavelo | Conectando a Comunidade e o Comércio</title>
+    <!-- Fontes e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS E CONFIGURAÇÕES GLOBAIS (Design System)
+           ================================================================---------- */
+        :root {
+            --primary: #FF7F00;
+            --primary-hover: #e06d00;
+            --secondary: #2D3748;
+            --dark: #1A202C;
+            --gray-text: #4A5568;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 30px -10px rgba(255, 127, 0, 0.15);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ==========================================================================
+           2. CABEÇALHO & NAVEGAÇÃO
+           ================================================================---------- */
+        .main-header {
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            color: var(--gray-text);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        .main-nav a:hover, .main-nav a:focus {
+            color: var(--primary);
+            background-color: #FFF7ED;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .user-actions a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-login {
+            color: var(--dark);
+            background: transparent;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-login:hover {
+            border-color: var(--dark);
+        }
+
+        .btn-cadastrar {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-cadastrar:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION (Destaque Inicial)
+           ================================================================---------- */
+        .hero-welcome {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #FFF1E6;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-welcome h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-welcome p {
+            color: var(--gray-text);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           4. SEÇÕES E COMPONENTES GERAIS
+           ================================================================---------- */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title-wrapper {
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            font-size: 1.7rem;
+            color: var(--dark);
+            margin-bottom: 6px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+        }
+
+        .separator-custom {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 20px 0;
+        }
+
+        /* ==========================================================================
+           5. GRID DE PARCEIROS PREMIUM
+           ================================================================---------- */
+        .anuncios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .anuncio-item {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .anuncio-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(255, 127, 0, 0.4);
+        }
+
+        .anuncio-icon-wrapper {
+            background-color: #FFF7ED;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 90px;
+        }
+
+        .anuncio-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .anuncio-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .anuncio-content h3 {
+            color: var(--dark);
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .anuncio-content p {
+            color: var(--gray-text);
+            font-size: 0.88rem;
+            margin-bottom: 12px;
+        }
+
+        .card-footer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .tag-parceiro {
+            background-color: #EDF2F7;
+            color: var(--secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.15);
+        }
+
+        .carregar-mais-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .btn-carregar-mais {
+            background-color: var(--white);
+            color: var(--dark);
+            border: 1px solid var(--border-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-carregar-mais:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: #FFF7ED;
+        }
+
+        /* ==========================================================================
+           6. SEÇÃO DE NOVIDADES
+           ================================================================---------- */
+        .novidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .novidade-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .novidade-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .novidade-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .novidade-card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .novidade-tag {
+            background-color: #EDF2F7;
+            color: var(--secondary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .novidade-card p {
+            color: var(--gray-text);
+            font-size: 0.88rem;
+        }
+
+        /* ==========================================================================
+           7. PLANOS DE ANÚNCIO (Monetização)
+           ================================================================---------- */
+        .anuncie-planos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .plano-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .plano-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .plano-gold {
+            border: 2px solid var(--primary);
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .plano-card h3 {
+            color: var(--dark);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .plano-card ul {
+            list-style: none;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .plano-card li {
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--gray-text);
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plano-card li i {
+            color: #38A169;
+        }
+
+        .plano-gold li i {
+            color: var(--primary);
+        }
+
+        .valor {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .valor small {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-text);
+        }
+
+        .btn-plano {
+            display: block;
+            text-align: center;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-plano:hover {
+            background-color: var(--border-color);
+        }
+
+        .btn-plano-gold {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-plano-gold:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* ==========================================================================
+           8. UTILIDADE PÚBLICA
+           ================================================================---------- */
+        .utilidade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .utilidade-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .utilidade-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .utilidade-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .utilidade-card h3 {
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .utilidade-card h3 i {
+            color: var(--primary);
+        }
+
+        .utilidade-tag {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .tag-emprego { background-color: #38A169; }
+        .tag-social { background-color: #3182CE; }
+        .tag-saude { background-color: #E53E3E; }
+        .tag-evento { background-color: #D69E2E; }
+
+        .utilidade-card p {
+            color: var(--gray-text);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           9. RODAPÉ E RESPONSIVIDADE
+           ================================================================---------- */
+        .main-footer {
+            background-color: var(--secondary);
+            color: #A0AEC0;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.85rem;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .main-nav ul {
+                justify-content: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .hero-welcome h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
+    <!-- CABEÇALHO -->
     <header class="main-header">
         <div class="header-content container">
             <div class="logo">
@@ -17,7 +593,7 @@
                 <p>📍 Seu Hub de Compras, Serviços e Comunidade em Goiânia</p>
             </div>
             
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Navegação Principal">
                 <ul>
                     <li><a href="#parceiros"><i class="fas fa-handshake"></i> Parceiros</a></li>
                     <li><a href="#novidades"><i class="fas fa-newspaper"></i> Novidades</a></li>
@@ -33,23 +609,26 @@
         </div>
     </header>
 
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="container">
         
-        <!-- Hero Section de Boas-Vindas -->
+        <!-- Hero Section -->
         <section class="hero-welcome">
             <div class="hero-badge">🚀 O Maior Portal da Região</div>
             <h2>Tudo o que acontece no Garavelo em um só clique</h2>
             <p>Encontre os melhores comércios, fique por dentro das novidades e conecte-se com a nossa comunidade.</p>
         </section>
 
-        <section id="parceiros" class="section-parceiros">
+        <!-- Seção Parceiros Premium -->
+        <section id="parceiros">
             <div class="section-title-wrapper">
                 <h2>🥇 Parceiros Premium no Garavelo</h2>
                 <p class="section-description">O comércio de elite da região. Qualidade, confiança e vantagens exclusivas.</p>
             </div>
             
             <div class="anuncios-grid" id="parceiros-grid">
-                <div class="anuncio-item partner" data-loja="Novo Mundo" data-categoria="varejo">
+                <!-- Anúncio 1 -->
+                <div class="anuncio-item partner" data-loja="Novo Mundo">
                     <div class="anuncio-icon-wrapper">
                         <i class="fas fa-home anuncio-icon"></i>
                     </div>
@@ -58,12 +637,13 @@
                         <p>A maior em eletro e móveis! <strong>Desconto de 10%</strong> em toda a linha branca para clientes Portal Garavelo.</p>
                         <div class="card-footer-info">
                             <span class="tag-parceiro">VAREJO GIGANTE</span>
-                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp" aria-label="WhatsApp da Novo Mundo"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="anuncio-item partner" data-loja="Supermercado Tatico" data-categoria="alimentacao">
+                <!-- Anúncio 2 -->
+                <div class="anuncio-item partner" data-loja="Supermercado Tatico">
                     <div class="anuncio-icon-wrapper">
                         <i class="fas fa-shopping-basket anuncio-icon"></i>
                     </div>
@@ -72,12 +652,13 @@
                         <p>Sua compra completa com o preço mais baixo. Confira o nosso açougue e hortifrúti fresco todos os dias!</p>
                         <div class="card-footer-info">
                             <span class="tag-parceiro">COMPRA FÁCIL</span>
-                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp" aria-label="WhatsApp do Supermercado Tatico"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="anuncio-item partner" data-loja="Odontocenter OrtoBom" data-categoria="saude">
+                <!-- Anúncio 3 -->
+                <div class="anuncio-item partner" data-loja="Odontocenter OrtoBom">
                     <div class="anuncio-icon-wrapper">
                         <i class="fas fa-tooth anuncio-icon"></i>
                     </div>
@@ -86,7 +667,7 @@
                         <p>Excelência em ortodontia e estética. Primeira consulta e avaliação com scanner 3D <strong>gratuita</strong>.</p>
                         <div class="card-footer-info">
                             <span class="tag-parceiro">SAÚDE & BEM-ESTAR</span>
-                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp" aria-label="WhatsApp da Odontocenter"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
@@ -99,46 +680,51 @@
 
         <div class="separator-custom"></div>
 
-        <section id="novidades" class="section-novidades">
+        <!-- Seção Novidades -->
+        <section id="novidades">
             <div class="section-title-wrapper">
                 <h2>🚨 Novidades Quentes na Região</h2>
                 <p class="section-description">Notícias, inaugurações e eventos que movimentam o Garavelo esta semana.</p>
             </div>
             
             <div class="novidades-grid">
-                <div class="novidade-card novidade-destaque-1">
+                <div class="novidade-card">
                     <div class="novidade-header">
                         <h3>🚀 Inauguração Tech</h3>
                         <span class="novidade-tag">NEGÓCIOS</span>
                     </div>
-                    <p>A <strong>Mega Eletrônicos Celulares</strong> reinaugurou com espaço *premium*. Novo laboratório de assistência técnica ultra-rápida.</p>
+                    <p>A <strong>Mega Eletrônicos Celulares</strong> reinaugurou com espaço premium e laboratório de assistência técnica ultra-rápida.</p>
                 </div>
-                <div class="novidade-card novidade-destaque-2">
+                
+                <div class="novidade-card">
                     <div class="novidade-header">
                         <h3>🎨 Arte Local</h3>
                         <span class="novidade-tag">CULTURA</span>
                     </div>
-                    <p>O <strong>Art Subliminal Tattoo Estúdio</strong> comemora 5 anos com exposição de arte e flash day neste sábado. Tatuagens com 30% off.</p>
+                    <p>O <strong>Art Subliminal Tattoo</strong> comemora 5 anos com exposição de arte e flash day neste sábado. Tatuagens com 30% off.</p>
                 </div>
-                <div class="novidade-card novidade-destaque-3">
+                
+                <div class="novidade-card">
                     <div class="novidade-header">
                         <h3>🎓 Educação</h3>
                         <span class="novidade-tag">OPORTUNIDADE</span>
                     </div>
-                    <p>A <strong>Faculdade Estácio</strong> anuncia novos cursos EAD com mensalidades acessíveis para a comunidade do Garavelo.</p>
+                    <p>A <strong>Faculdade Estácio</strong> anuncia novos cursos EAD com mensalidades acessíveis para moradores do Garavelo.</p>
                 </div>
             </div>
         </section>
 
         <div class="separator-custom"></div>
 
-        <section id="anuncie" class="section-anuncie">
+        <!-- Seção Anuncie Conosco -->
+        <section id="anuncie">
             <div class="section-title-wrapper">
                 <h2>📢 Leve Seu Negócio para o Próximo Nível</h2>
                 <p class="section-description">Pare de depender de panfletos. Conecte-se diretamente com clientes segmentados do Garavelo.</p>
             </div>
             
             <div class="anuncie-planos">
+                <!-- Plano Prata -->
                 <div class="plano-card">
                     <h3>Plano PRATA</h3>
                     <ul>
@@ -150,8 +736,9 @@
                     <a href="#" class="btn-plano">COMECE AGORA</a>
                 </div>
                 
+                <!-- Plano Ouro -->
                 <div class="plano-card plano-gold">
-                    <div class="badge-popularem">Mais Popular</div>
+                    <div class="badge-popular">Mais Popular</div>
                     <h3>Plano OURO</h3>
                     <ul>
                         <li><i class="fas fa-star"></i> Todos os benefícios do Prata</li>
@@ -162,6 +749,7 @@
                     <a href="#" class="btn-plano btn-plano-gold">QUERO SER OURO</a>
                 </div>
                 
+                <!-- Plano Fidelidade -->
                 <div class="plano-card">
                     <h3>Plano FIDELIDADE</h3>
                     <ul>
@@ -177,19 +765,20 @@
 
         <div class="separator-custom"></div>
 
-        <section id="utilidade" class="section-utilidade">
+        <!-- Seção Utilidade Pública -->
+        <section id="utilidade">
             <div class="section-title-wrapper">
                 <h2>📢 Informação e Utilidade Pública</h2>
                 <p class="section-description">Conectando a população do Garavelo com vagas, cursos e serviços essenciais.</p>
             </div>
             
-            <div class="utilidade-grid" id="utilidade-grid">
+            <div class="utilidade-grid">
                 <div class="utilidade-card">
                     <div class="utilidade-top">
                         <h3><i class="fas fa-user-tie"></i> Vagas de Emprego</h3>
                         <span class="utilidade-tag tag-emprego">URGENTE</span>
                     </div>
-                    <p>O <strong>Supermercado Tatico</strong> está com processo seletivo aberto para Caixas, Repositores e Açougueiros. Enviar CV até sexta!</p>
+                    <p>O <strong>Supermercado Tatico</strong> está com processo seletivo aberto para Caixas, Repositores e Açougueiros. Enviar CV!</p>
                 </div>
                 
                 <div class="utilidade-card">
@@ -197,7 +786,7 @@
                         <h3><i class="fas fa-graduation-cap"></i> Curso Gratuito</h3>
                         <span class="utilidade-tag tag-social">SOCIAL</span>
                     </div>
-                    <p>A Associação de Moradores do Garavelo oferece curso de Cabeleireiro Básico GRATUITO. Inscrições limitadas na sede.</p>
+                    <p>A Associação de Moradores oferece curso de Cabeleireiro Básico GRATUITO. Inscrições limitadas na sede.</p>
                 </div>
                 
                 <div class="utilidade-card">
@@ -219,66 +808,78 @@
         </section>
     </main>
 
-<footer class="main-footer">
-    <div class="footer-container">
-        
-        <!-- Coluna 1: Marca e Bio -->
-        <div class="footer-col">
-            <h3 class="footer-logo">Portal Garavelo</h3>
-            <p class="footer-desc">O ponto de encontro oficial da comunidade. Informação, utilidade pública e conexão para todos os moradores de Goiânia.</p>
-            <div class="footer-social">
-                <a href="https://instagram.com/conectagaravelo" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Conecta Garavelo">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-            </div>
+    <!-- RODAPÉ -->
+    <main-footer class="main-footer" style="display:block;">
+        <div class="container">
+            <p>&copy; 2026 Portal Garavelo. Todos os direitos reservados. | Desenvolvido para a Comunidade.</p>
         </div>
+    </main-footer>
 
-        <!-- Coluna 2: Navegação -->
-        <div class="footer-col">
-            <h4 class="footer-heading">Navegação</h4>
-            <ul class="footer-list">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Notícias</a></li>
-                <li><a href="#">Comércio Local</a></li>
-                <li><a href="#">Classificados</a></li>
-            </ul>
-        </div>
+    <!-- JAVASCRIPT INTEGRADO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Banco de dados simulado para expansão dinâmica
+            const todosAnuncios = [
+                { nome: "Mega Eletrônicos Celulares", desc: "Os últimos lançamentos em smartphones e acessórios com assistência ultra-rápida.", tag: "TECNOLOGIA", icon: "fas fa-mobile-alt" },
+                { nome: "Banco do Brasil (Ag. 4775)", desc: "Agência completa para pessoa física e jurídica. Soluções financeiras na região.", tag: "FINANÇAS", icon: "fas fa-university" },
+                { nome: "Auto Escola Garavelo", desc: "Sua CNH descomplicada. As melhores taxas de aprovação e pacotes promocionais.", tag: "SERVIÇOS", icon: "fas fa-car" },
+                { nome: "Pernambucanas", desc: "Moda feminina, masculina, infantil e utilidades para o seu lar em um só lugar.", tag: "VAREJO GERAL", icon: "fas fa-tags" },
+                { nome: "Zé do Peixe - Peixaria", desc: "O melhor e mais fresco pescado da região! Qualidade e tradição. Entregas grátis.", tag: "ALIMENTAÇÃO", icon: "fas fa-fish" },
+                { nome: "Ativa Planos de Saúde", desc: "O melhor convênio médico para você e sua família. Faça uma cotação sem compromisso.", tag: "SAÚDE", icon: "fas fa-ambulance" },
+                { nome: "Lorenzo Móveis", desc: "Móveis planejados sob medida. Design moderno com o melhor custo-benefício.", tag: "DECORAÇÃO", icon: "fas fa-couch" },
+                { nome: "Barbearia do Fabim", desc: "Cortes e barba clássicos e modernos. Agende seu horário e evite filas.", tag: "BELEZA", icon: "fas fa-cut" }
+            ];
 
-        <!-- Coluna 3: Utilidade -->
-        <div class="footer-col">
-            <h4 class="footer-heading">Utilidade Pública</h4>
-            <ul class="footer-list">
-                <li><a href="#">Telefones Úteis</a></li>
-                <li><a href="#">Anuncie Conosco</a></li>
-                <li><a href="#">Fale Conosco</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
-        </div>
+            const anunciosPorLote = 3;
+            let proximoIndice = 0;
+            const parceirosGrid = document.getElementById('parceiros-grid');
+            const btnCarregarMais = document.getElementById('btn-carregar-mais');
+            
+            const criarAnuncio = (loja) => {
+                const div = document.createElement('div');
+                div.classList.add('anuncio-item', 'partner');
+                div.setAttribute('data-loja', loja.nome);
 
-        <!-- Coluna 4: Newsletter -->
-        <div class="footer-col">
-            <h4 class="footer-heading">Fique por dentro</h4>
-            <p class="footer-desc">Receba novidades direto no seu e-mail.</p>
-            <form class="footer-form" onsubmit="event.preventDefault();">
-                <input type="email" placeholder="Seu melhor e-mail" required class="footer-input">
-                <button type="submit" class="footer-btn">Inscrever</button>
-            </form>
-        </div>
+                div.innerHTML = `
+                    <div class="anuncio-icon-wrapper">
+                        <i class="${loja.icon} anuncio-icon"></i>
+                    </div>
+                    <div class="anuncio-content">
+                        <h3>${loja.nome}</h3>
+                        <p>${loja.desc}</p>
+                        <div class="card-footer-info">
+                            <span class="tag-parceiro">${loja.tag}</span>
+                            <a href="https://wa.me/5562999999999" target="_blank" class="btn-whatsapp" title="Falar no WhatsApp" aria-label="WhatsApp de ${loja.nome}"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                `;
+                return div;
+            };
 
-    </div>
+            const carregarMaisAnuncios = () => {
+                const loteDeAnuncios = todosAnuncios.slice(proximoIndice, proximoIndice + anunciosPorLote);
 
-    <!-- Rodapé Inferior -->
-    <div class="footer-bottom">
-        <div class="footer-bottom-container">
-            <p>&copy; 2026 Portal Garavelo. Todos os direitos reservados.</p>
-            <div class="footer-legal">
-                <a href="#">Termos de Uso</a>
-                <span>•</span>
-                <a href="#">Privacidade</a>
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="script.js"></script>
+                if (loteDeAnuncios.length > 0) {
+                    loteDeAnuncios.forEach(loja => {
+                        parceirosGrid.appendChild(criarAnuncio(loja));
+                    });
+                    proximoIndice += loteDeAnuncios.length;
+
+                    if (proximoIndice >= todosAnuncios.length) {
+                        btnCarregarMais.textContent = "Fim dos Anúncios Destaque";
+                        btnCarregarMais.disabled = true;
+                        btnCarregarMais.style.opacity = '0.5';
+                        btnCarregarMais.style.cursor = 'not-allowed';
+                    } else {
+                        btnCarregarMais.innerHTML = `Carregar Mais Anúncios <i class="fas fa-chevron-down"></i>`;
+                    }
+                }
+            };
+            
+            if (btnCarregarMais) {
+                btnCarregarMais.addEventListener('click', carregarMaisAnuncios);
+            }
+        });
+    </script>
 </body>
 </html>
