@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Garavelo | Seu Hub Local</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo">PORTAL <span>GARAVELO</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#parceiros">Parceiros</a></li>
+                    <li><a href="#novidades">Novidades</a></li>
+                    <li><a href="#anuncie" class="btn-cta">Anuncie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Conectando o Garavelo</h1>
+            <p>Comércio, serviços e utilidade pública em um só lugar.</p>
+        </section>
+
+        <section id="parceiros">
+            <h2>🥇 Parceiros Premium</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="varejo">Varejo</button>
+                <button class="filter-btn" data-filter="saude">Saúde</button>
+            </div>
+            <div class="anuncios-grid" id="parceiros-grid"></div>
+            <div class="center"><button id="btn-carregar-mais" class="btn-primary">Ver mais parceiros</button></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
