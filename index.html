@@ -504,23 +504,65 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="container">
         
-        <!-- SEÇÃO PARCEIROS (EXIBE ANÚNCIOS DO BANCO + PADRÕES) -->
-        <!-- HTML Estruturado e Acessível -->
+        <!-- SEÇÃO PARCEIROS (UI/UX Nível Mundial) -->
 <section id="parceiros" class="partners-section" aria-labelledby="parceiros-titulo">
     <div class="container">
-        <header class="section-header">
-            <span class="section-badge">Destaques Locais</span>
-            <h2 id="parceiros-titulo">⭐ Nossos Parceiros e Anúncios</h2>
-            <p class="section-description">Descubra as principais empresas, comércios locais e ofertas recentes cadastradas na região.</p>
+        
+        <!-- Cabeçalho com Alinhamento e Filtros Rápidos -->
+        <header class="section-header-advanced">
+            <div class="header-content">
+                <span class="global-badge">
+                    <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Ecossistema Verificado
+                </span>
+                <h2 id="parceiros-titulo">Destaques e Ofertas da Região</h2>
+                <p class="section-description">Conecte-se com as marcas líderes, comércios locais e oportunidades exclusivas selecionadas para você.</p>
+            </div>
+            
+            <!-- Filtros de Categoria (UX Interativo) -->
+            <div class="partners-filters" role="tablist" aria-label="Filtros de parceiros">
+                <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+                <button class="filter-btn" role="tab" aria-selected="false" data-filter="patrocinados">Patrocinados</button>
+                <button class="filter-btn" role="tab" aria-selected="false" data-filter="locais">Comércios Locais</button>
+            </div>
         </header>
         
-        <!-- Grid de Anúncios -->
-        <div class="anuncios-grid" id="gridAnuncios" aria-live="polite">
-            <!-- Os cards serão injetados dinamicamente aqui via JavaScript -->
+        <!-- Grid de Anúncios com Layout Dinâmico -->
+        <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
+            
+            <!-- Exemplo de Card Padrão (Será injetado/gerado via JS com esta estrutura rica) -->
+            <article class="partner-card is-sponsored" data-category="patrocinados">
+                <div class="card-media">
+                    <div class="skeleton-loader"></div>
+                    <!-- Imagem real entra aqui via JS -->
+                    <span class="sponsor-tag">Patrocinado</span>
+                    <button class="bookmark-btn" aria-label="Salvar favorito" title="Salvar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="category-indicator">Serviços Financeiros</span>
+                        <div class="rating">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <span>4.9 (128)</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Banco Parceiro Oficial - Crédito Inteligente</h3>
+                    <p class="card-text">Taxas exclusivas para investimentos e expansão do seu negócio local com aprovação digital imediata.</p>
+                    <div class="card-footer">
+                        <span class="offer-highlight">Até 20% OFF</span>
+                        <a href="#" class="cta-link">
+                            Explorar Oferta
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
         </div>
     </div>
 </section>
-
 <style>
 /* ==========================================
    VARIÁVEIS E CONFIGURAÇÃO DA SEÇÃO
