@@ -508,61 +508,119 @@
 <section id="parceiros" class="partners-section" aria-labelledby="parceiros-titulo">
     <div class="container">
         
-        <!-- Cabeçalho Expandido: Hierarquia e UX de Filtro -->
-<header class="w-full max-w-7xl mx-auto px-6 py-12 flex flex-col gap-8">
-    
-    <!-- Topo: Badge e Título -->
-    <div class="flex flex-col items-center md:items-start text-center md:text-left">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 mb-4">
-            <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-            </span>
-            <span class="text-xs font-bold text-indigo-700 uppercase tracking-wider">Ecossistema Verificado</span>
-        </div>
-        
-        <h2 id="parceiros-titulo" class="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-            Destaques e Ofertas da <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Região</span>
-        </h2>
-        
-        <p class="text-lg text-slate-500 max-w-xl">
-            Conecte-se com marcas líderes, comércios locais e oportunidades exclusivas selecionadas manualmente para você.
-        </p>
+        <!-- Cabeçalho com Alinhamento, Filtros e Ícone Ajustado -->
+<header class="section-header-advanced">
+    <div class="header-content">
+        <span class="global-badge">
+            <!-- Ícone corrigido com tamanho fixo explícito para não explodir -->
+            <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; min-width: 16px;">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Ecossistema Verificado</span>
+        </span>
+        <h2 id="parceiros-titulo">Destaques e Ofertas da Região</h2>
+        <p class="section-description">Conecte-se com as marcas líderes, comércios locais e oportunidades exclusivas selecionadas para você.</p>
     </div>
-
-    <!-- Filtros Expandidos com Efeito de Foco -->
-    <nav class="flex flex-wrap items-center justify-center md:justify-start gap-3" role="tablist" aria-label="Filtros de parceiros">
-        <!-- O botão ativo recebe uma sombra sutil e gradiente -->
-        <button class="filter-btn active group px-6 py-2.5 rounded-full text-sm font-bold bg-slate-900 text-white shadow-lg shadow-slate-200 transition-all duration-300 hover:scale-105" role="tab" aria-selected="true" data-filter="all">
-            Todos
-        </button>
-        <button class="filter-btn group px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 transition-all duration-300" role="tab" aria-selected="false" data-filter="patrocinados">
-            Patrocinados
-        </button>
-        <button class="filter-btn group px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 transition-all duration-300" role="tab" aria-selected="false" data-filter="locais">
-            Comércios Locais
-        </button>
-    </nav>
+    
+    <!-- Filtros de Categoria (UX Interativo) -->
+    <div class="partners-filters" role="tablist" aria-label="Filtros de parceiros">
+        <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="patrocinados">Patrocinados</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="locais">Comércios Locais</button>
+    </div>
 </header>
 
-<script>
-    // UX: Lógica simples para alternar o estado ativo dos botões
-    document.querySelectorAll('.filter-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove estado de todos
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-slate-900', 'text-white', 'shadow-lg');
-                btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-                btn.setAttribute('aria-selected', 'false');
-            });
-            
-            // Adiciona estado ao clicado
-            button.classList.add('bg-slate-900', 'text-white', 'shadow-lg');
-            button.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-            button.setAttribute('aria-selected', 'true');
-        });
-    });
-</script>
+<style>
+    /* CSS dedicado para garantir o alinhamento perfeito e evitar bugs visuais */
+    .section-header-advanced {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    @media (min-width: 768px) {
+        .section-header-advanced {
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .global-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        background-color: #eef2ff;
+        color: #4f46e5;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .badge-icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .section-header-advanced h2 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #111827;
+        margin: 0 0 8px 0;
+        letter-spacing: -0.5px;
+    }
+
+    .section-description {
+        font-size: 15px;
+        color: #6b7280;
+        margin: 0;
+        max-width: 600px;
+        line-height: 1.5;
+    }
+
+    .partners-filters {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .filter-btn {
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid #e5e7eb;
+        background-color: #ffffff;
+        color: #4b5563;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+        border-color: #4f46e5;
+        color: #4f46e5;
+    }
+
+    .filter-btn.active {
+        background-color: #111827;
+        color: #ffffff;
+        border-color: #111827;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+</style>
         
         <!-- Grid de Anúncios com Layout Dinâmico -->
         <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
