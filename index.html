@@ -508,24 +508,37 @@
 <section id="parceiros" class="partners-section" aria-labelledby="parceiros-titulo">
     <div class="container">
         
-        <!-- Cabeçalho com Alinhamento e Filtros Rápidos -->
-        <header class="section-header-advanced">
-            <div class="header-content">
-                <span class="global-badge">
-                    <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    Ecossistema Verificado
-                </span>
-                <h2 id="parceiros-titulo">Destaques e Ofertas da Região</h2>
-                <p class="section-description">Conecte-se com as marcas líderes, comércios locais e oportunidades exclusivas selecionadas para você.</p>
-            </div>
-            
-            <!-- Filtros de Categoria (UX Interativo) -->
-            <div class="partners-filters" role="tablist" aria-label="Filtros de parceiros">
-                <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">Todos</button>
-                <button class="filter-btn" role="tab" aria-selected="false" data-filter="patrocinados">Patrocinados</button>
-                <button class="filter-btn" role="tab" aria-selected="false" data-filter="locais">Comércios Locais</button>
-            </div>
-        </header>
+        <!-- Cabeçalho com Alinhamento e Filtros Rápidos (Corrigido) -->
+<header class="w-full max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-gray-100 mb-8">
+    
+    <!-- Lado Esquerdo: Título e Descrição -->
+    <div class="flex flex-col items-start max-w-2xl">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 mb-3">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Ecossistema Verificado
+        </span>
+        <h2 id="parceiros-titulo" class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+            Destaques e Ofertas da Região
+        </h2>
+        <p class="text-gray-500 text-sm md:text-base mt-2">
+            Conecte-se com as marcas líderes, comércios locais e oportunidades exclusivas selecionadas para você.
+        </p>
+    </div>
+    
+    <!-- Lado Direito: Filtros de Categoria (UX Interativo) -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto" role="tablist" aria-label="Filtros de parceiros">
+        <button class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white shadow-sm transition-all whitespace-nowrap" role="tab" aria-selected="true" data-filter="all">
+            Todos
+        </button>
+        <button class="px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all whitespace-nowrap" role="tab" aria-selected="false" data-filter="patrocinados">
+            Patrocinados
+        </button>
+        <button class="px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all whitespace-nowrap" role="tab" aria-selected="false" data-filter="locais">
+            Comércios Locais
+        </button>
+    </div>
+
+</header>
         
         <!-- Grid de Anúncios com Layout Dinâmico -->
         <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
