@@ -622,104 +622,47 @@
     }
 </style>
         
-        <!-- Grid de Anúncios com Layout Dinâmico -->
-        <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
-            
-            <!-- Exemplo de Card Padrão (Será injetado/gerado via JS com esta estrutura rica) -->
-            <article class="partner-card is-sponsored" data-category="patrocinados">
-                <div class="card-media">
-                    <div class="skeleton-loader"></div>
-                    <!-- Imagem real entra aqui via JS -->
-                    <span class="sponsor-tag">Patrocinado</span>
-                    <button class="bookmark-btn" aria-label="Salvar favorito" title="Salvar">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">
-                        <span class="category-indicator">Serviços Financeiros</span>
-                        <div class="rating">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                            <span>4.9 (128)</span>
-                        </div>
-                    </div>
-                    <h3 class="card-title">Banco Parceiro Oficial - Crédito Inteligente</h3>
-                    <p class="card-text">Taxas exclusivas para investimentos e expansão do seu negócio local com aprovação digital imediata.</p>
-                    <div class="card-footer">
-                        <span class="offer-highlight">Até 20% OFF</span>
-                        <a href="#" class="cta-link">
-                            Explorar Oferta
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-            </article>
-
+        <!-- Grid de Anúncios Corrigido (Agora os cards ficam menores e lado a lado) -->
+<div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
+    
+    <!-- Exemplo de Card Compacto e Clicável -->
+    <article class="partner-card" onclick="abrirDetalhesAnuncio({
+        titulo: 'Cafeteria & Confeitaria Artesanal',
+        categoria: 'Gastronomia',
+        descricao: 'Venha saborear os melhores cafés especiais e bolos caseiros da região com 15% de desconto.',
+        imagem: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
+        fotos: [
+            'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
+            'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb',
+            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085',
+            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
+            'https://images.unsplash.com/photo-1442512595331-e89e73853f31'
+        ],
+        whatsapp: '5562999999999',
+        instagram: 'cafeteriaexemplo',
+        email: 'contato@cafeteria.com',
+        localizacao: 'Av. Rio Verde, Qd. 10, Garavelo, Aparecida de Goiânia - GO',
+        catalogoUrl: '#'
+    })">
+        <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24" alt="Cafeteria" class="card-img">
+            <span class="sponsor-tag">Destaque</span>
         </div>
-    </div>
-</section>
-<style>
-/* ==========================================
-   VARIÁVEIS E CONFIGURAÇÃO DA SEÇÃO
-   ================================---------- */
-:root {
-    --primary-color: #6366f1;
-    --primary-hover: #4f46e5;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --bg-card: #ffffff;
-    --bg-section: #f8fafc;
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
-    --radius-lg: 16px;
-    --radius-full: 9999px;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        <div class="card-body">
+            <div class="card-meta">
+                <span class="category-indicator">Gastronomia</span>
+                <span class="rating">⭐ 4.9</span>
+            </div>
+            <h3 class="card-title">Cafeteria & Confeitaria Artesanal</h3>
+            <p class="card-text">Venha saborear os melhores cafés especiais e bolos caseiros...</p>
+            <div class="card-footer">
+                <span class="offer-tag">15% OFF</span>
+                <span class="view-details-link">Ver detalhes &rarr;</span>
+            </div>
+        </div>
+    </article>
 
-.partners-section {
-    background-color: var(--bg-section);
-    padding: 5rem 1.5rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-header {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto 3rem auto;
-}
-
-.section-badge {
-    display: inline-block;
-    background-color: #e0e7ff;
-    color: var(--primary-color);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.35rem 0.85rem;
-    border-radius: var(--radius-full);
-    margin-bottom: 0.75rem;
-}
-
-.section-header h2 {
-    color: var(--text-main);
-    font-size: 2.25rem;
-    font-weight: 800;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.025em;
-}
-
-.section-description {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
+</div>
 
 /* ==========================================
    GRID E CARDS DE ANÚNCIOS
