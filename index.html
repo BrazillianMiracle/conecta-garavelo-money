@@ -1093,32 +1093,159 @@ async function fetchAnunciosDoSupabase() {
         }
 
         // --- 3. BANCO DE DADOS: CRIAR E CARREGAR ANÚNCIOS REAIS ---
-        async function enviarAnuncioReal(e) {
-            e.preventDefault();
-            const titulo = document.getElementById('anuncioTitulo').value;
-            const descricao = document.getElementById('anuncioDesc').value;
-            const imagem = document.getElementById('anuncioImg').value;
 
-            // Insere na tabela 'anuncios' do Supabase
-            const { data, error } = await supabaseClient
-                .from('anuncios')
-                .insert([
-                    { titulo: titulo, descricao: descricao, imagem_url: imagem, user_id: usuarioAtual.id }
-                ]);
+// Função auxiliar para exibir feedback visual moderno (substitui o alert)
+function mostrarFeedback(mensagem, tipo = 'sucesso') {
+    // Remove feedback anterior se existir
+    const antigo = document.getElementById('toastFeedback');
+    if (antigo) antigo.remove();
 
-            if (error) {
-                alert('Erro ao salvar anúncio: ' + error.message + '\n(Certifique-se de ter criado a tabela "anuncios" no seu Supabase)');
-            } else {
-                alert('Anúncio publicado com sucesso no banco de dados!');
-                document.getElementById('formNovoAnuncio').reset();
-                await carregarAnunciosReais();
-                window.location.href = '#parceiros';
-            }
+    const toast = document.createElement('div');
+    toast.id = 'toastFeedback';
+    toast.className = `fixed bottom-5 right-5 z-50 px-4 py-3 rounded-xl shadow-lg text-sm font-medium transition-all duration-300 transform translate-y-2 opacity-0 flex items-center gap-2 ${
+        tipo === 'sucesso' ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
+    }`;
+    
+    toast.innerHTML = `
+        <span>${tipo === 'sucesso' ? '✅' : '⚠️'}</span>
+        <span>${mensagem}</span>
+    `;
+
+    document.body.appendChild(toast);
+    
+    // Animação de entrada
+    setTimeout(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+    }, 10);
+
+    // Remove após 4 segundos
+    setTimeout(() => {
+        toast.classList.add('translate-y-2', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+    }, 4000);
+}
+
+async function enviarAnuncioReal(e) {
+    e.preventDefault();
+    
+    const btnSubmit = e.target.querySelector('button[type="submit"]');
+    const textoOriginal = btnSubmit ? btnSubmit.innerHTML : '';
+    
+    const titulo = document.getElementById('anuncioTitulo').value.trim();
+    const descricao = document.getElementById('anuncioDesc').value.trim();
+    const imagem = document.getElementById('anuncioImg').value.trim();
+
+    // Validação básica de UX antes do envio
+    if (!titulo || !descricao) {
+        mostrarFeedback('Por favor, preencha todos os campos obrigatórios.', 'erro');
+        return;
+    }
+
+    try {
+        // Estado de Loading no botão (UX profissional)
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Publicando...
+            `;
         }
 
-        async function carregarAnunciosReais() {
-            const grid = document.getElementById('gridAnuncios');
-            
+        // Insere na tabela 'anuncios' do Supabase
+        const { data, error } = await supabaseClient
+            .from('anuncios')
+            .insert([
+                { titulo: titulo, descricao: descricao, imagem_url: imagem, user_id: usuarioAtual.id }
+            ]);
+
+        if (error) throw error;
+
+        mostrarFeedback('Anúncio publicado com sucesso!');
+        document.getElementById('formNovoAnuncio').reset();
+        await carregarAnunciosReais();
+        
+        // Scroll suave para a seção
+        const secaoParceiros = document.getElementById('parceiros');
+        if (secaoParceiros) {
+            secaoParceiros.scrollIntoView({ behavior: 'smooth' });
+        }
+
+    } catch (error) {
+        console.error('Erro ao salvar anúncio:', error);
+        mostrarFeedback('Erro ao salvar anúncio. Verifique sua conexão ou a tabela.', 'erro');
+    } finally {
+        // Restaura o botão
+        if (btnSubmit) {
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = textoOriginal;
+        }
+    }
+}
+
+async function carregarAnunciosReais() {
+    const grid = document.getElementById('gridAnuncios');
+    if (!grid) return;
+
+    try {
+        // Estado de carregamento esqueleto/loading na UI
+        grid.innerHTML = `
+            <div class="col-span-full flex justify-center items-center py-12 text-gray-400 gap-2">
+                <svg class="animate-spin h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Carregando anúncios...</span>
+            </div>
+        `;
+
+        const { data: anuncios, error } = await supabaseClient
+            .from('anuncios')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        // Tratamento para lista vazia (UX importante)
+        if (!anuncios || anuncios.length === 0) {
+            grid.innerHTML = `
+                <div class="col-span-full text-center py-12 px-4 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
+                    <p class="text-gray-500 font-medium">Nenhum anúncio encontrado por enquanto.</p>
+                    <p class="text-gray-400 text-sm mt-1">Seja o primeiro a publicar usando o formulário acima!</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Renderiza os cards com melhor acabamento visual (Tailwind utility classes esperadas)
+        grid.innerHTML = anuncios.map(anuncio => `
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col">
+                ${anuncio.imagem_url ? `
+                    <div class="h-48 w-full overflow-hidden bg-gray-100">
+                        <img src="${anuncio.imagem_url}" alt="${anuncio.titulo}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                ` : ''}
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="font-bold text-gray-800 text-lg mb-2 line-clamp-1">${anuncio.titulo}</h3>
+                    <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">${anuncio.descricao}</p>
+                    <div class="pt-4 border-t border-gray-50 flex items-center justify-between text-xs text-gray-400">
+                        <span>Publicado recentemente</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+    } catch (error) {
+        console.error('Erro ao carregar anúncios:', error);
+        grid.innerHTML = `
+            <div class="col-span-full text-center py-8 text-rose-500 bg-rose-50 rounded-xl border border-rose-100">
+                <p>Não foi possível carregar os anúncios no momento.</p>
+            </div>
+        `;
+    }
+}
             // Dados estáticos iniciais de parceiros de alta relevância
             let conteudoHTML = `
                 <div class="anuncio-item">
