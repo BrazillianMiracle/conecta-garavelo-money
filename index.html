@@ -1317,26 +1317,258 @@ async function fetchAnunciosDoSupabase() {
 }
 </script>
 
-        <!-- SEÇÃO PROMOÇÕES -->
-        <section id="promocoes">
-            <h2>🔥 Promoções em Destaque</h2>
+        <!-- SEÇÃO PROMOÇÕES EXPANDIDA E COMPACTA (Estilo Carrossel Horizontal) -->
+<section id="promocoes" class="promocoes-section-advanced">
+    <div class="promo-header-wrapper">
+        <div>
+            <h2 class="promo-main-title">🔥 Promoções em Destaque</h2>
             <p class="section-description">As melhores oportunidades e descontos válidos esta semana no Garavelo.</p>
-            
-            <div class="promo-cards-container">
-                <div class="promo-card">
-                    <h3>30% OFF em Cosméticos</h3>
-                    <p>Na <strong>Alfa Cosméticos</strong>, leve três produtos e pague apenas dois. Aproveite!</p>
-                </div>
-                <div class="promo-card">
-                    <h3>Troca de Óleo e Alinhamento</h3>
-                    <p>Ganhe alinhamento completo na compra de 4 pneus no <strong>Auto Center Mernitus</strong>.</p>
-                </div>
-                <div class="promo-card">
-                    <h3>Cortes e Barba por R$35</h3>
-                    <p>Promoção especial na <strong>Santa Bárbara Barbearia</strong> de segunda a quarta-feira.</p>
-                </div>
+        </div>
+        <div class="promo-nav-hints">
+            <span>Arraste para o lado &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- Container de Rolagem Horizontal Infinita/Fluida -->
+    <div class="promo-carousel-container" id="promoCarousel">
+        
+        <!-- Promoção 1 -->
+        <div class="promo-card-item">
+            <div class="promo-card-media">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e" alt="Cosméticos" class="promo-img">
+                <span class="promo-badge-off">30% OFF</span>
             </div>
-        </section>
+            <div class="promo-card-content">
+                <span class="promo-store-name">Alfa Cosméticos</span>
+                <h3 class="promo-card-title">30% OFF em Cosméticos</h3>
+                <p class="promo-card-text">Na Alfa Cosméticos, leve três produtos e pague apenas dois. Aproveite!</p>
+                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
+            </div>
+        </div>
+
+        <!-- Promoção 2 -->
+        <div class="promo-card-item">
+            <div class="promo-card-media">
+                <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193c" alt="Automotivo" class="promo-img">
+                <span class="promo-badge-off">Grátis</span>
+            </div>
+            <div class="promo-card-content">
+                <span class="promo-store-name">Auto Center Mernitus</span>
+                <h3 class="promo-card-title">Troca de Óleo e Alinhamento</h3>
+                <p class="promo-card-text">Ganhe alinhamento completo na compra de 4 pneus no Auto Center.</p>
+                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
+            </div>
+        </div>
+
+        <!-- Promoção 3 -->
+        <div class="promo-card-item">
+            <div class="promo-card-media">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1" alt="Barbearia" class="promo-img">
+                <span class="promo-badge-off">R$ 35</span>
+            </div>
+            <div class="promo-card-content">
+                <span class="promo-store-name">Santa Bárbara Barbearia</span>
+                <h3 class="promo-card-title">Cortes e Barba por R$35</h3>
+                <p class="promo-card-text">Promoção especial na barbearia de segunda a quarta-feira.</p>
+                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
+            </div>
+        </div>
+
+        <!-- Promoção 4 (Extra adicionada para preencher e dar volume) -->
+        <div class="promo-card-item">
+            <div class="promo-card-media">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Gastronomia" class="promo-img">
+                <span class="promo-badge-off">20% OFF</span>
+            </div>
+            <div class="promo-card-content">
+                <span class="promo-store-name">Burger Artesanal Garavelo</span>
+                <h3 class="promo-card-title">Combo Duplo + Batata</h3>
+                <p class="promo-card-text">Na compra de qualquer burger artesanal, ganhe refil de batata frita.</p>
+                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
+            </div>
+        </div>
+
+        <!-- Promoção 5 (Extra adicionada) -->
+        <div class="promo-card-item">
+            <div class="promo-card-media">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f" alt="Fitness" class="promo-img">
+                <span class="promo-badge-off">Grátis</span>
+            </div>
+            <div class="promo-card-content">
+                <span class="promo-store-name">CrossFit Garavelo</span>
+                <h3 class="promo-card-title">1ª Semana Experimental</h3>
+                <p class="promo-card-text">Venha conhecer nossa estrutura sem pagar absolutamente nada.</p>
+                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .promocoes-section-advanced {
+        width: 100%;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .promo-header-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .promo-main-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 4px 0;
+    }
+
+    .promo-section-description {
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+    }
+
+    .promo-nav-hints {
+        font-size: 13px;
+        font-weight: 600;
+        color: #4f46e5;
+    }
+
+    /* Carrossel Horizontal Compacto e Elegante */
+    .promo-carousel-container {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e1 #f1f5f9;
+    }
+
+    .promo-carousel-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .promo-carousel-container::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 4px;
+    }
+
+    .promo-carousel-container::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    /* Card Individual Otimizado (Não ocupa espaço vertical excessivo) */
+    .promo-card-item {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .promo-card-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+    }
+
+    .promo-card-media {
+        position: relative;
+        height: 130px;
+        width: 100%;
+        background: #f1f5f9;
+    }
+
+    .promo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .promo-badge-off {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ef4444;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 4px 8px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .promo-card-content {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .promo-store-name {
+        font-size: 11px;
+        font-weight: 700;
+        color: #4f46e5;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
+    }
+
+    .promo-card-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 6px 0;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .promo-card-text {
+        font-size: 12px;
+        color: #64748b;
+        margin: 0 0 14px 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+
+    .promo-action-btn {
+        background: #f8fafc;
+        color: #4f46e5;
+        border: 1px solid #c7d2fe;
+        text-align: center;
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .promo-action-btn:hover {
+        background: #4f46e5;
+        color: #ffffff;
+    }
+</style>
 
         <!-- SEÇÃO CRIAR ANÚNCIO (PROTEGIDADA POR LOGIN COM 3 DADOS + FOTO/FORMULÁRIO) -->
         <section id="anunciar-secao">
