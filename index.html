@@ -623,125 +623,69 @@
 </style>
         
         <!-- Grid de Anúncios com Layout Dinâmico -->
-       <!-- Grid de Anúncios Compactos e Clicáveis -->
-<div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
-    
-    <!-- Card 1 -->
-    <article class="partner-card" onclick="abrirDetalhesAnuncio({
-        titulo: 'Auto Mecânica Especializada',
-        categoria: 'Automotivo',
-        descricao: 'Revisão completa, troca de óleo e diagnósticos computadorizados para o seu veículo.',
-        imagem: 'https://images.unsplash.com/photo-1486006920555-c77dce18193c',
-        fotos: [
-            'https://images.unsplash.com/photo-1486006920555-c77dce18193c',
-            'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e',
-            'https://images.unsplash.com/photo-1580273916550-e323be2ae537',
-            'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f',
-            'https://images.unsplash.com/photo-1487754180451-c456f719a1fc'
-        ],
-        whatsapp: '5562999999999',
-        instagram: 'mecanicaexemplo',
-        email: 'contato@mecanica.com',
-        localizacao: 'Av. Igualdade, Setor Garavelo, Aparecida de Goiânia - GO'
-    })">
-        <div class="card-media">
-            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193c" alt="Auto Mecânica" class="card-img">
-            <span class="badge-tag">Destaque</span>
-        </div>
-        <div class="card-body">
-            <div class="card-meta">
-                <span class="card-category">Automotivo</span>
-                <span class="card-rating">⭐ 4.9</span>
-            </div>
-            <h3 class="card-title">Auto Mecânica Especializada</h3>
-            <p class="card-text">Revisão completa, troca de óleo e diagnósticos computadorizados...</p>
-            <div class="card-action">
-                <span>Ver Oferta / Conhecer</span>
-                <span>&rarr;</span>
-            </div>
-        </div>
-    </article>
+       <!-- Seção Principal de Anúncios e Ofertas -->
+<div class="portal-container">
+    <div class="portal-header-flex">
+        <h2>Anúncios e Ofertas em Destaque</h2>
+        <span class="portal-subtitle">Clique em qualquer anúncio para ver detalhes, fotos e gerenciar conteúdos.</span>
+    </div>
 
-    <!-- Card 2 -->
-    <article class="partner-card" onclick="abrirDetalhesAnuncio({
-        titulo: 'Cafeteria & Confeitaria Artesanal',
-        categoria: 'Gastronomia',
-        descricao: 'Venha saborear os melhores cafés especiais e bolos caseiros da região com 15% de desconto.',
-        imagem: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
-        fotos: [
-            'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
-            'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb',
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085',
-            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
-            'https://images.unsplash.com/photo-1442512595331-e89e73853f31'
-        ],
-        whatsapp: '5562988888888',
-        instagram: 'cafeteriaexemplo',
-        email: 'contato@cafeteria.com',
-        localizacao: 'Av. Rio Verde, Qd. 10, Garavelo, Aparecida de Goiânia - GO'
-    })">
-        <div class="card-media">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24" alt="Cafeteria" class="card-img">
-            <span class="badge-tag">Promoção</span>
-        </div>
-        <div class="card-body">
-            <div class="card-meta">
-                <span class="card-category">Gastronomia</span>
-                <span class="card-rating">⭐ 4.8</span>
-            </div>
-            <h3 class="card-title">Cafeteria & Confeitaria Artesanal</h3>
-            <p class="card-text">Venha saborear os melhores cafés especiais e bolos caseiros...</p>
-            <div class="card-action">
-                <span>Ver Oferta / Conhecer</span>
-                <span>&rarr;</span>
-            </div>
-        </div>
-    </article>
-
+    <!-- Grid com vários anúncios pré-cadastrados -->
+    <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite"></div>
 </div>
 
 <style>
-    /* Grid em colunas para caber vários cards lado a lado */
-    .anuncios-grid-advanced {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
+    .portal-container {
         width: 100%;
         max-width: 1200px;
         margin: 30px auto;
         padding: 0 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
+    .portal-header-flex {
+        margin-bottom: 20px;
+    }
+    .portal-header-flex h2 {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 5px 0;
+    }
+    .portal-subtitle {
+        font-size: 14px;
+        color: #64748b;
+    }
+    .anuncios-grid-advanced {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+    }
     .partner-card {
         background: #ffffff;
         border-radius: 12px;
         overflow: hidden;
         border: 1px solid #e2e8f0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.03);
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
         display: flex;
         flex-direction: column;
     }
-
     .partner-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     }
-
     .card-media {
         position: relative;
-        height: 150px;
+        height: 160px;
         width: 100%;
         background: #f1f5f9;
     }
-
     .card-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-
     .badge-tag {
         position: absolute;
         top: 10px;
@@ -750,35 +694,30 @@
         color: #fff;
         font-size: 10px;
         font-weight: 700;
-        padding: 3px 8px;
+        padding: 4px 8px;
         border-radius: 4px;
         text-transform: uppercase;
     }
-
     .card-body {
         padding: 16px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
     }
-
     .card-meta {
         display: flex;
         justify-content: space-between;
         font-size: 12px;
         margin-bottom: 6px;
     }
-
     .card-category {
         font-weight: 600;
         color: #4f46e5;
     }
-
     .card-rating {
         color: #64748b;
         font-weight: 600;
     }
-
     .card-title {
         font-size: 15px;
         font-weight: 700;
@@ -786,7 +725,6 @@
         margin: 0 0 6px 0;
         line-height: 1.3;
     }
-
     .card-text {
         font-size: 13px;
         color: #64748b;
@@ -794,9 +732,8 @@
         line-height: 1.4;
         flex-grow: 1;
     }
-
     .card-action {
-        background: #6366f1;
+        background: #4f46e5;
         color: white;
         text-align: center;
         padding: 10px;
@@ -811,57 +748,246 @@
 </style>
 
 <script>
-    // Script da Falsa Multipage (Garante que abre o modal limpo sem recarregar a página)
-    function abrirDetalhesAnuncio(dados) {
+    // Banco de Dados Inicial Completo com Vários Anúncios
+    const anunciosIniciais = [
+        {
+            id: 1,
+            titulo: 'Auto Mecânica Especializada',
+            categoria: 'Automotivo',
+            descricao: 'Revisão completa, troca de óleo e diagnósticos computadorizados para o seu veículo.',
+            fotos: [
+                'https://images.unsplash.com/photo-1486006920555-c77dce18193c',
+                'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e',
+                'https://images.unsplash.com/photo-1580273916550-e323be2ae537',
+                'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f',
+                'https://images.unsplash.com/photo-1487754180451-c456f719a1fc'
+            ],
+            whatsapp: '5562999999999',
+            instagram: 'mecanicaexemplo',
+            email: 'contato@mecanica.com',
+            localizacao: 'Av. Igualdade, Setor Garavelo, Aparecida de Goiânia - GO',
+            anotacoes: ''
+        },
+        {
+            id: 2,
+            titulo: 'Cafeteria & Confeitaria Artesanal',
+            categoria: 'Gastronomia',
+            descricao: 'Venha saborear os melhores cafés especiais e bolos caseiros da região com 15% de desconto.',
+            fotos: [
+                'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
+                'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb',
+                'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085',
+                'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
+                'https://images.unsplash.com/photo-1442512595331-e89e73853f31'
+            ],
+            whatsapp: '5562988888888',
+            instagram: 'cafeteriaexemplo',
+            email: 'contato@cafeteria.com',
+            localizacao: 'Av. Rio Verde, Qd. 10, Garavelo, Aparecida de Goiânia - GO',
+            anotacoes: ''
+        },
+        {
+            id: 3,
+            titulo: 'Studio de Fitness & Saúde',
+            categoria: 'Bem-estar',
+            descricao: 'Transforme sua rotina com treinos personalizados e acompanhamento profissional de ponta.',
+            fotos: [
+                'https://images.unsplash.com/photo-1534438327276-14e5300c3a48',
+                'https://images.unsplash.com/photo-1517838277536-f5f99be501cd',
+                'https://images.unsplash.com/photo-1540497077202-7c8a3999166f',
+                'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b',
+                'https://images.unsplash.com/photo-1518611012118-696072aa579a'
+            ],
+            whatsapp: '5562977777777',
+            instagram: 'studiofitness',
+            email: 'contato@fitness.com',
+            localizacao: 'Av. W-5, Setor Garavelo, Aparecida de Goiânia - GO',
+            anotacoes: ''
+        },
+        {
+            id: 4,
+            titulo: 'Pet Shop & Clínica Veterinária',
+            categoria: 'Pet',
+            descricao: 'Banho, tosa, acessórios e atendimento veterinário 24h especializado para seu pet.',
+            fotos: [
+                'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7',
+                'https://images.unsplash.com/photo-1583337130417-3346a1be7dee',
+                'https://images.unsplash.com/photo-1548767797-d8c844163c4c',
+                'https://images.unsplash.com/photo-1576201836106-db1758fd1c97',
+                'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8'
+            ],
+            whatsapp: '5562966666666',
+            instagram: 'petshopgaravelo',
+            email: 'contato@petshop.com',
+            localizacao: 'Av. Goiânia, Setor Garavelo, Aparecida de Goiânia - GO',
+            anotacoes: ''
+        }
+    ];
+
+    // Carrega dados salvos no Cache/LocalStorage ou usa os padrões
+    function obterAnuncios() {
+        const salvo = localStorage.getItem('portal_garavelo_anuncios');
+        if (salvo) {
+            try { return JSON.parse(salvo); } catch(e) { return anunciosIniciais; }
+        }
+        return anunciosIniciais;
+    }
+
+    function salvarAnuncios(dados) {
+        localStorage.setItem('portal_garavelo_anuncios', JSON.stringify(dados));
+    }
+
+    // Renderiza o Grid de Anúncios na Tela
+    function renderizarGrid() {
+        const lista = obterAnuncios();
+        const grid = document.getElementById('gridAnuncios');
+        if (!grid) return;
+
+        grid.innerHTML = lista.map(anuncio => `
+            <article class="partner-card" onclick="abrirDetalhesAnuncio(${anuncio.id})">
+                <div class="card-media">
+                    <img src="${anuncio.fotos[0]}" alt="${anuncio.titulo}" class="card-img">
+                    <span class="badge-tag">${anuncio.categoria}</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-category">${anuncio.categoria}</span>
+                        <span class="card-rating">⭐ 4.9</span>
+                    </div>
+                    <h3 class="card-title">${anuncio.titulo}</h3>
+                    <p class="card-text">${anuncio.descricao}</p>
+                    <div class="card-action">
+                        <span>Ver Oferta / Conhecer</span>
+                        <span>&rarr;</span>
+                    </div>
+                </div>
+            </article>
+        `).join('');
+    }
+
+    // Abre a Multipage Falsa (Modal interno com upload de 5 fotos e dados persistentes)
+    function abrirDetalhesAnuncio(id) {
+        const lista = obterAnuncios();
+        const anuncio = lista.find(a => a.id === id);
+        if (!anuncio) return;
+
         const antigo = document.getElementById('modalMultipageFalsa');
         if (antigo) antigo.remove();
 
         const modal = document.createElement('div');
         modal.id = 'modalMultipageFalsa';
         modal.style.cssText = `
-            position: fixed; inset: 0; z-index: 99999; background: rgba(15, 23, 42, 0.75);
-            display: flex; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(4px);
+            position: fixed; inset: 0; z-index: 99999; background: rgba(15, 23, 42, 0.8);
+            display: flex; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(5px);
         `;
 
-        let fotosHtml = dados.fotos.map((img, i) => `
-            <img src="${img}" onclick="document.getElementById('fotoPrincipalModal').src='${img}'" style="width: 60px; height: 45px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid ${i === 0 ? '#4f46e5' : '#cbd5e1'};">
-        `).join('');
-
-        modal.innerHTML = `
-            <div style="background: #ffffff; width: 100%; max-width: 700px; border-radius: 16px; overflow: hidden; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-                <div style="padding: 14px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 12px; font-weight: 700; color: #4f46e5; text-transform: uppercase;">Detalhes da Oferta</span>
-                    <button onclick="document.getElementById('modalMultipageFalsa').remove()" style="background: #e2e8f0; border: none; width: 28px; height: 28px; border-radius: 50%; font-weight: bold; cursor: pointer; color: #334155;">&times;</button>
+        // Monta HTML das 5 fotos e inputs de upload
+        function atualizarConteudoModal() {
+            let fotosHtml = anuncio.fotos.map((img, i) => `
+                <div style="position: relative; min-width: 65px; height: 50px;">
+                    <img src="${img}" onclick="document.getElementById('fotoPrincipalModal').src='${img}'" style="width: 65px; height: 50px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid ${i === 0 ? '#4f46e5' : '#cbd5e1'};">
                 </div>
-                <div style="overflow-y: auto; padding: 20px;">
-                    <div style="margin-bottom: 16px;">
-                        <img id="fotoPrincipalModal" src="${dados.fotos[0]}" style="width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #e2e8f0;">
-                        <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px;">
-                            ${fotosHtml}
-                        </div>
-                    </div>
-                    <span style="font-size: 11px; background: #e0e7ff; color: #4f46e5; padding: 3px 8px; border-radius: 4px; font-weight: 700;">${dados.categoria}</span>
-                    <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 8px 0 6px 0;">${dados.titulo}</h2>
-                    <p style="font-size: 13px; color: #475569; line-height: 1.4; margin-bottom: 16px;">${dados.descricao}</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px;">
-                        <a href="https://wa.me/${dados.whatsapp}" target="_blank" style="background: #22c55e; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">WhatsApp</a>
-                        <a href="https://instagram.com/${dados.instagram}" target="_blank" style="background: #ec4899; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">Instagram</a>
-                        <a href="mailto:${dados.email}" style="background: #6366f1; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">E-mail</a>
+            `).join('');
+
+            return `
+                <div style="background: #ffffff; width: 100%; max-width: 720px; border-radius: 16px; overflow: hidden; max-height: 92vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                    <div style="padding: 14px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 12px; font-weight: 700; color: #4f46e5; text-transform: uppercase;">Detalhes e Gestão do Anúncio</span>
+                        <button onclick="document.getElementById('modalMultipageFalsa').remove()" style="background: #e2e8f0; border: none; width: 30px; height: 30px; border-radius: 50%; font-weight: bold; cursor: pointer; color: #334155;">&times;</button>
                     </div>
 
-                    <div style="border-top: 1px solid #e2e8f0; padding-top: 14px;">
-                        <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Localização</h4>
-                        <p style="font-size: 12px; color: #64748b; margin-bottom: 8px;">${dados.localizacao}</p>
-                        <div style="width: 100%; height: 160px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
-                            <iframe width="100%" height="100%" frameborder="0" src="https://maps.google.com/maps?q=${encodeURIComponent(dados.localizacao)}&output=embed"></iframe>
+                    <div style="overflow-y: auto; padding: 20px;">
+                        <!-- Imagem Principal e Miniaturas -->
+                        <div style="margin-bottom: 16px;">
+                            <img id="fotoPrincipalModal" src="${anuncio.fotos[0]}" style="width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #f1f5f9;">
+                            <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;">
+                                ${fotosHtml}
+                            </div>
+                        </div>
+
+                        <!-- Botão para Carregar Foto do PC ou Celular -->
+                        <div style="background: #f8fafc; border: 2px dashed #cbd5e1; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 16px;">
+                            <label style="font-size: 13px; font-weight: 600; color: #4f46e5; cursor: pointer; display: block;">
+                                📁 Carregar nova foto (do PC ou Celular)
+                                <input type="file" accept="image/*" onchange="carregarFotoDoDispositivo(event, ${anuncio.id})" style="display: none;">
+                            </label>
+                            <span style="font-size: 11px; color: #64748b;">(Adiciona automaticamente à galeria do anúncio)</span>
+                        </div>
+
+                        <span style="font-size: 11px; background: #e0e7ff; color: #4f46e5; padding: 3px 8px; border-radius: 4px; font-weight: 700;">${anuncio.categoria}</span>
+                        <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 8px 0 6px 0;">${anuncio.titulo}</h2>
+                        <p style="font-size: 13px; color: #475569; line-height: 1.4; margin-bottom: 16px;">${anuncio.descricao}</p>
+                        
+                        <!-- Botões de Contato -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px;">
+                            <a href="https://wa.me/${anuncio.whatsapp}" target="_blank" style="background: #22c55e; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">WhatsApp</a>
+                            <a href="https://instagram.com/${anuncio.instagram}" target="_blank" style="background: #ec4899; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">Instagram</a>
+                            <a href="mailto:${anuncio.email}" style="background: #4f46e5; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">E-mail</a>
+                        </div>
+
+                        <!-- Campo Persistente de Anotações/Informações Salvas no Cache -->
+                        <div style="background: #f1f5f9; padding: 14px; border-radius: 8px; margin-bottom: 16px;">
+                            <label style="font-size: 12px; font-weight: 700; color: #0f172a; display: block; margin-bottom: 6px;">Anotações / Informações Extras (Salva no Cache):</label>
+                            <textarea id="txtAnotacoes" placeholder="Digite informações adicionais que ficam salvas no navegador..." style="width: 100%; height: 70px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; resize: none;">${anuncio.anotacoes || ''}</textarea>
+                            <button onclick="salvarNotaAnuncio(${anuncio.id})" style="margin-top: 8px; background: #0f172a; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">Salvar Informação</button>
+                        </div>
+
+                        <!-- Mapa -->
+                        <div style="border-top: 1px solid #e2e8f0; padding-top: 14px;">
+                            <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Localização</h4>
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 8px;">${anuncio.localizacao}</p>
+                            <div style="width: 100%; height: 150px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
+                                <iframe width="100%" height="100%" frameborder="0" src="https://maps.google.com/maps?q=${encodeURIComponent(anuncio.localizacao)}&output=embed"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
+
+        modal.innerHTML = atualizarConteudoModal();
         document.body.appendChild(modal);
     }
+
+    // Função para carregar imagem do computador/celular do usuário e atualizar persistência
+    function carregarFotoDoDispositivo(event, anuncioId) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const base64Image = e.target.result;
+            let lista = obterAnuncios();
+            let anuncio = lista.find(a => a.id === anuncioId);
+            
+            if (anuncio) {
+                // Adiciona a foto carregada e mantém no máximo 5 fotos
+                anuncio.fotos.unshift(base64Image);
+                if (anuncio.fotos.length > 5) anuncio.fotos.pop();
+                
+                salvarAnuncios(lista);
+                renderizarGrid();
+                abrirDetalhesAnuncio(anuncioId); // Atualiza o modal aberto
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Salva anotações de forma persistente no localStorage
+    function salvarNotaAnuncio(id) {
+        const texto = document.getElementById('txtAnotacoes').value;
+        let lista = obterAnuncios();
+        let anuncio = lista.find(a => a.id === id);
+        
+        if (anuncio) {
+            anuncio.anotacoes = texto;
+            salvarAnuncios(lista);
+            alert('Informações salvas com sucesso de forma persistente no cache do navegador!');
+        }
+    }
+
+    // Inicializa o Grid ao carregar a página
+    window.addEventListener('DOMContentLoaded', renderizarGrid);
 </script>
             </article>
 
