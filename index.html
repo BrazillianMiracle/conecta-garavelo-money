@@ -623,10 +623,46 @@
 </style>
         
         <!-- Grid de Anúncios com Layout Dinâmico -->
-       <!-- Grid de Anúncios Profissional e Compacto -->
+       <!-- Grid de Anúncios Compactos e Clicáveis -->
 <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
     
-    <!-- Card 1: Cafeteria -->
+    <!-- Card 1 -->
+    <article class="partner-card" onclick="abrirDetalhesAnuncio({
+        titulo: 'Auto Mecânica Especializada',
+        categoria: 'Automotivo',
+        descricao: 'Revisão completa, troca de óleo e diagnósticos computadorizados para o seu veículo.',
+        imagem: 'https://images.unsplash.com/photo-1486006920555-c77dce18193c',
+        fotos: [
+            'https://images.unsplash.com/photo-1486006920555-c77dce18193c',
+            'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e',
+            'https://images.unsplash.com/photo-1580273916550-e323be2ae537',
+            'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f',
+            'https://images.unsplash.com/photo-1487754180451-c456f719a1fc'
+        ],
+        whatsapp: '5562999999999',
+        instagram: 'mecanicaexemplo',
+        email: 'contato@mecanica.com',
+        localizacao: 'Av. Igualdade, Setor Garavelo, Aparecida de Goiânia - GO'
+    })">
+        <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193c" alt="Auto Mecânica" class="card-img">
+            <span class="badge-tag">Destaque</span>
+        </div>
+        <div class="card-body">
+            <div class="card-meta">
+                <span class="card-category">Automotivo</span>
+                <span class="card-rating">⭐ 4.9</span>
+            </div>
+            <h3 class="card-title">Auto Mecânica Especializada</h3>
+            <p class="card-text">Revisão completa, troca de óleo e diagnósticos computadorizados...</p>
+            <div class="card-action">
+                <span>Ver Oferta / Conhecer</span>
+                <span>&rarr;</span>
+            </div>
+        </div>
+    </article>
+
+    <!-- Card 2 -->
     <article class="partner-card" onclick="abrirDetalhesAnuncio({
         titulo: 'Cafeteria & Confeitaria Artesanal',
         categoria: 'Gastronomia',
@@ -639,61 +675,25 @@
             'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
             'https://images.unsplash.com/photo-1442512595331-e89e73853f31'
         ],
-        whatsapp: '5562999999999',
+        whatsapp: '5562988888888',
         instagram: 'cafeteriaexemplo',
         email: 'contato@cafeteria.com',
         localizacao: 'Av. Rio Verde, Qd. 10, Garavelo, Aparecida de Goiânia - GO'
     })">
         <div class="card-media">
             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24" alt="Cafeteria" class="card-img">
-            <span class="badge-tag">Destaque</span>
+            <span class="badge-tag">Promoção</span>
         </div>
         <div class="card-body">
             <div class="card-meta">
                 <span class="card-category">Gastronomia</span>
-                <span class="card-rating">⭐ 4.9</span>
-            </div>
-            <h3 class="card-title">Cafeteria & Confeitaria Artesanal</h3>
-            <p class="card-text">Venha saborear os melhores cafés especiais e bolos caseiros da região...</p>
-            <div class="card-action">
-                <span class="action-text">Ver detalhes</span>
-                <span class="action-arrow">&rarr;</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Card 2: Academia -->
-    <article class="partner-card" onclick="abrirDetalhesAnuncio({
-        titulo: 'Studio de Fitness & Saúde',
-        categoria: 'Bem-estar',
-        descricao: 'Transforme sua rotina com treinos personalizados e acompanhamento profissional de ponta.',
-        imagem: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48',
-        fotos: [
-            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48',
-            'https://images.unsplash.com/photo-1517838277536-f5f99be501cd',
-            'https://images.unsplash.com/photo-1540497077202-7c8a3999166f',
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b',
-            'https://images.unsplash.com/photo-1518611012118-696072aa579a'
-        ],
-        whatsapp: '5562988888888',
-        instagram: 'studiofitness',
-        email: 'contato@fitness.com',
-        localizacao: 'Av. Igualdade, Setor Garavelo, Aparecida de Goiânia - GO'
-    })">
-        <div class="card-media">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48" alt="Academia" class="card-img">
-            <span class="badge-tag">Parceiro</span>
-        </div>
-        <div class="card-body">
-            <div class="card-meta">
-                <span class="card-category">Bem-estar</span>
                 <span class="card-rating">⭐ 4.8</span>
             </div>
-            <h3 class="card-title">Studio de Fitness & Saúde</h3>
-            <p class="card-text">Transforme sua rotina com treinos personalizados e acompanhamento...</p>
+            <h3 class="card-title">Cafeteria & Confeitaria Artesanal</h3>
+            <p class="card-text">Venha saborear os melhores cafés especiais e bolos caseiros...</p>
             <div class="card-action">
-                <span class="action-text">Ver detalhes</span>
-                <span class="action-arrow">&rarr;</span>
+                <span>Ver Oferta / Conhecer</span>
+                <span>&rarr;</span>
             </div>
         </div>
     </article>
@@ -701,39 +701,37 @@
 </div>
 
 <style>
-    /* Grid moderno, espaçado e responsivo que acomoda vários cards */
+    /* Grid em colunas para caber vários cards lado a lado */
     .anuncios-grid-advanced {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
         width: 100%;
         max-width: 1200px;
         margin: 30px auto;
         padding: 0 20px;
     }
 
-    /* Design refinado do Card */
     .partner-card {
         background: #ffffff;
-        border-radius: 14px;
+        border-radius: 12px;
         overflow: hidden;
         border: 1px solid #e2e8f0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        transition: all 0.25s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
         cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
         display: flex;
         flex-direction: column;
     }
 
     .partner-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08);
-        border-color: #cbd5e1;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     }
 
     .card-media {
         position: relative;
-        height: 140px; /* Altura controlada para não ficar gigante */
+        height: 150px;
         width: 100%;
         background: #f1f5f9;
     }
@@ -748,15 +746,13 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        background: rgba(15, 23, 42, 0.75);
+        background: rgba(15, 23, 42, 0.8);
         color: #fff;
         font-size: 10px;
-        font-weight: 600;
+        font-weight: 700;
         padding: 3px 8px;
-        border-radius: 6px;
-        backdrop-filter: blur(4px);
+        border-radius: 4px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
 
     .card-body {
@@ -769,7 +765,6 @@
     .card-meta {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         font-size: 12px;
         margin-bottom: 6px;
     }
@@ -780,7 +775,7 @@
     }
 
     .card-rating {
-        color: #475569;
+        color: #64748b;
         font-weight: 600;
     }
 
@@ -790,10 +785,6 @@
         color: #0f172a;
         margin: 0 0 6px 0;
         line-height: 1.3;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     .card-text {
@@ -801,86 +792,68 @@
         color: #64748b;
         margin: 0 0 14px 0;
         line-height: 1.4;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
         flex-grow: 1;
     }
 
     .card-action {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-top: 1px solid #f1f5f9;
-        padding-top: 10px;
+        background: #6366f1;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
         font-size: 13px;
         font-weight: 600;
-        color: #4f46e5;
-    }
-
-    .action-arrow {
-        transition: transform 0.2s;
-    }
-
-    .partner-card:hover .action-arrow {
-        transform: translateX(4px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
     }
 </style>
 
 <script>
-    // Sistema de "Falsa Multipage" (Modal Estilo Gaveta Fluida com 5 fotos, mapa e botões)
+    // Script da Falsa Multipage (Garante que abre o modal limpo sem recarregar a página)
     function abrirDetalhesAnuncio(dados) {
-        const modalAntigo = document.getElementById('modalMultipageFalsa');
-        if (modalAntigo) modalAntigo.remove();
+        const antigo = document.getElementById('modalMultipageFalsa');
+        if (antigo) antigo.remove();
 
         const modal = document.createElement('div');
         modal.id = 'modalMultipageFalsa';
         modal.style.cssText = `
-            position: fixed; inset: 0; z-index: 99999; background: rgba(15, 23, 42, 0.7);
-            display: flex; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(5px);
+            position: fixed; inset: 0; z-index: 99999; background: rgba(15, 23, 42, 0.75);
+            display: flex; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(4px);
         `;
 
-        let miniaturasHtml = dados.fotos.map((img, i) => `
-            <img src="${img}" onclick="document.getElementById('fotoPrincipalModal').src='${img}'" style="width: 65px; height: 45px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid ${i === 0 ? '#4f46e5' : '#cbd5e1'};">
+        let fotosHtml = dados.fotos.map((img, i) => `
+            <img src="${img}" onclick="document.getElementById('fotoPrincipalModal').src='${img}'" style="width: 60px; height: 45px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid ${i === 0 ? '#4f46e5' : '#cbd5e1'};">
         `).join('');
 
         modal.innerHTML = `
-            <div style="background: #ffffff; width: 100%; max-width: 750px; border-radius: 16px; overflow: hidden; max-height: 92vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative;">
-                
-                <!-- Barra de Topo da Multipage Falsa -->
-                <div style="padding: 16px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; background: #f8fafc;">
-                    <span style="font-size: 13px; font-weight: 700; color: #4f46e5; text-transform: uppercase;">Detalhes do Anúncio</span>
-                    <button onclick="document.getElementById('modalMultipageFalsa').remove()" style="background: #e2e8f0; border: none; width: 30px; height: 30px; border-radius: 50%; font-weight: bold; cursor: pointer; color: #334155;">&times;</button>
+            <div style="background: #ffffff; width: 100%; max-width: 700px; border-radius: 16px; overflow: hidden; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                <div style="padding: 14px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 12px; font-weight: 700; color: #4f46e5; text-transform: uppercase;">Detalhes da Oferta</span>
+                    <button onclick="document.getElementById('modalMultipageFalsa').remove()" style="background: #e2e8f0; border: none; width: 28px; height: 28px; border-radius: 50%; font-weight: bold; cursor: pointer; color: #334155;">&times;</button>
                 </div>
-
-                <!-- Conteúdo com Rolagem -->
-                <div style="overflow-y: auto; padding: 24px;">
-                    <!-- Galeria de 5 Fotos -->
-                    <div style="margin-bottom: 20px;">
-                        <img id="fotoPrincipalModal" src="${dados.fotos[0]}" style="width: 100%; height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; background: #e2e8f0;">
-                        <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;">
-                            ${miniaturasHtml}
+                <div style="overflow-y: auto; padding: 20px;">
+                    <div style="margin-bottom: 16px;">
+                        <img id="fotoPrincipalModal" src="${dados.fotos[0]}" style="width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #e2e8f0;">
+                        <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px;">
+                            ${fotosHtml}
                         </div>
                     </div>
-
-                    <!-- Textos -->
-                    <span style="font-size: 12px; background: #e0e7ff; color: #4f46e5; padding: 4px 10px; border-radius: 6px; font-weight: 700;">${dados.categoria}</span>
-                    <h2 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 10px 0 8px 0;">${dados.titulo}</h2>
-                    <p style="font-size: 14px; color: #475569; line-height: 1.5; margin-bottom: 20px;">${dados.descricao}</p>
-
-                    <!-- Ações de Contato Direto -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 24px;">
-                        <a href="https://wa.me/${dados.whatsapp}" target="_blank" style="background: #22c55e; color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; text-decoration: none;">WhatsApp</a>
-                        <a href="https://instagram.com/${dados.instagram}" target="_blank" style="background: #ec4899; color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; text-decoration: none;">Instagram</a>
-                        <a href="mailto:${dados.email}" style="background: #6366f1; color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; text-decoration: none;">E-mail</a>
+                    <span style="font-size: 11px; background: #e0e7ff; color: #4f46e5; padding: 3px 8px; border-radius: 4px; font-weight: 700;">${dados.categoria}</span>
+                    <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 8px 0 6px 0;">${dados.titulo}</h2>
+                    <p style="font-size: 13px; color: #475569; line-height: 1.4; margin-bottom: 16px;">${dados.descricao}</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px;">
+                        <a href="https://wa.me/${dados.whatsapp}" target="_blank" style="background: #22c55e; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">WhatsApp</a>
+                        <a href="https://instagram.com/${dados.instagram}" target="_blank" style="background: #ec4899; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">Instagram</a>
+                        <a href="mailto:${dados.email}" style="background: #6366f1; color: #fff; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 600; text-decoration: none;">E-mail</a>
                     </div>
 
-                    <!-- Mapa Real Integrado -->
-                    <div style="border-top: 1px solid #e2e8f0; padding-top: 16px;">
-                        <h4 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 6px;">Localização</h4>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 10px;">${dados.localizacao}</p>
-                        <div style="width: 100%; height: 180px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0;">
+                    <div style="border-top: 1px solid #e2e8f0; padding-top: 14px;">
+                        <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Localização</h4>
+                        <p style="font-size: 12px; color: #64748b; margin-bottom: 8px;">${dados.localizacao}</p>
+                        <div style="width: 100%; height: 160px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
                             <iframe width="100%" height="100%" frameborder="0" src="https://maps.google.com/maps?q=${encodeURIComponent(dados.localizacao)}&output=embed"></iframe>
                         </div>
                     </div>
