@@ -623,35 +623,77 @@
 </style>
         
         <!-- Grid de Anúncios com Layout Dinâmico -->
-       <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
-            
-    <!-- Exemplo de Card Padrão Otimizado e Compacto -->
-    <article class="partner-card is-sponsored" data-category="patrocinados" style="background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; width: 100%; max-width: 340px; margin: 0 auto; transition: transform 0.2s ease;">
-        <div class="card-media" style="position: relative; height: 180px; width: 100%; background: #f3f4f6; overflow: hidden;">
-            <div class="skeleton-loader"></div>
-            <!-- Imagem real com tamanho controlado para não estourar -->
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48" alt="Anúncio" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="sponsor-tag" style="position: absolute; top: 10px; left: 10px; background: rgba(0, 0, 0, 0.75); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px;">Patrocinado</span>
-            <button class="bookmark-btn" aria-label="Salvar favorito" title="Salvar" style="position: absolute; top: 10px; right: 10px; background: #fff; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-            </button>
+       <!-- Grid de Anúncios Profissional e Compacto -->
+<div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
+    
+    <!-- Card 1: Cafeteria -->
+    <article class="partner-card" onclick="abrirDetalhesAnuncio({
+        titulo: 'Cafeteria & Confeitaria Artesanal',
+        categoria: 'Gastronomia',
+        descricao: 'Venha saborear os melhores cafés especiais e bolos caseiros da região com 15% de desconto.',
+        imagem: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
+        fotos: [
+            'https://images.unsplash.com/photo-1554118811-1e0d58224f24',
+            'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb',
+            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085',
+            'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
+            'https://images.unsplash.com/photo-1442512595331-e89e73853f31'
+        ],
+        whatsapp: '5562999999999',
+        instagram: 'cafeteriaexemplo',
+        email: 'contato@cafeteria.com',
+        localizacao: 'Av. Rio Verde, Qd. 10, Garavelo, Aparecida de Goiânia - GO'
+    })">
+        <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24" alt="Cafeteria" class="card-img">
+            <span class="badge-tag">Destaque</span>
         </div>
-        <div class="card-body" style="padding: 16px; display: flex; flex-direction: column; flex-grow: 1;">
-            <div class="card-meta" style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #6b7280; margin-bottom: 8px;">
-                <span class="category-indicator" style="font-weight: 600; color: #4f46e5;">Serviços Financeiros</span>
-                <div class="rating" style="display: flex; align-items: center; gap: 4px; color: #d97706; font-weight: 600;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <span>4.9 (128)</span>
-                </div>
+        <div class="card-body">
+            <div class="card-meta">
+                <span class="card-category">Gastronomia</span>
+                <span class="card-rating">⭐ 4.9</span>
             </div>
-            <h3 class="card-title" style="font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 6px 0; line-height: 1.3;">Banco Parceiro Oficial - Crédito Inteligente</h3>
-            <p class="card-text" style="font-size: 13px; color: #4b5563; margin: 0 0 16px 0; line-height: 1.4; flex-grow: 1;">Taxas exclusivas para investimentos e expansão do seu negócio local com aprovação digital imediata.</p>
-            <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 12px;">
-                <span class="offer-highlight" style="color: #059669; font-weight: 700; font-size: 12px; background: #ecfdf5; padding: 2px 6px; border-radius: 4px;">Até 20% OFF</span>
-                <a href="#" class="cta-link" style="color: #4f46e5; font-weight: 600; font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
-                    Explorar Oferta
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
+            <h3 class="card-title">Cafeteria & Confeitaria Artesanal</h3>
+            <p class="card-text">Venha saborear os melhores cafés especiais e bolos caseiros da região...</p>
+            <div class="card-action">
+                <span class="action-text">Ver detalhes</span>
+                <span class="action-arrow">&rarr;</span>
+            </div>
+        </div>
+    </article>
+
+    <!-- Card 2: Academia -->
+    <article class="partner-card" onclick="abrirDetalhesAnuncio({
+        titulo: 'Studio de Fitness & Saúde',
+        categoria: 'Bem-estar',
+        descricao: 'Transforme sua rotina com treinos personalizados e acompanhamento profissional de ponta.',
+        imagem: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48',
+        fotos: [
+            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48',
+            'https://images.unsplash.com/photo-1517838277536-f5f99be501cd',
+            'https://images.unsplash.com/photo-1540497077202-7c8a3999166f',
+            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b',
+            'https://images.unsplash.com/photo-1518611012118-696072aa579a'
+        ],
+        whatsapp: '5562988888888',
+        instagram: 'studiofitness',
+        email: 'contato@fitness.com',
+        localizacao: 'Av. Igualdade, Setor Garavelo, Aparecida de Goiânia - GO'
+    })">
+        <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48" alt="Academia" class="card-img">
+            <span class="badge-tag">Parceiro</span>
+        </div>
+        <div class="card-body">
+            <div class="card-meta">
+                <span class="card-category">Bem-estar</span>
+                <span class="card-rating">⭐ 4.8</span>
+            </div>
+            <h3 class="card-title">Studio de Fitness & Saúde</h3>
+            <p class="card-text">Transforme sua rotina com treinos personalizados e acompanhamento...</p>
+            <div class="card-action">
+                <span class="action-text">Ver detalhes</span>
+                <span class="action-arrow">&rarr;</span>
             </div>
         </div>
     </article>
@@ -659,17 +701,195 @@
 </div>
 
 <style>
-    /* O Grid que obriga os cards a ficarem menores e lado a lado */
-    #gridAnuncios {
+    /* Grid moderno, espaçado e responsivo que acomoda vários cards */
+    .anuncios-grid-advanced {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
         width: 100%;
         max-width: 1200px;
-        margin: 20px auto;
-        padding: 0 15px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    /* Design refinado do Card */
+    .partner-card {
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        transition: all 0.25s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .partner-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08);
+        border-color: #cbd5e1;
+    }
+
+    .card-media {
+        position: relative;
+        height: 140px; /* Altura controlada para não ficar gigante */
+        width: 100%;
+        background: #f1f5f9;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .badge-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(15, 23, 42, 0.75);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 6px;
+        backdrop-filter: blur(4px);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .card-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .card-category {
+        font-weight: 600;
+        color: #4f46e5;
+    }
+
+    .card-rating {
+        color: #475569;
+        font-weight: 600;
+    }
+
+    .card-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 6px 0;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .card-text {
+        font-size: 13px;
+        color: #64748b;
+        margin: 0 0 14px 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+
+    .card-action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #4f46e5;
+    }
+
+    .action-arrow {
+        transition: transform 0.2s;
+    }
+
+    .partner-card:hover .action-arrow {
+        transform: translateX(4px);
     }
 </style>
+
+<script>
+    // Sistema de "Falsa Multipage" (Modal Estilo Gaveta Fluida com 5 fotos, mapa e botões)
+    function abrirDetalhesAnuncio(dados) {
+        const modalAntigo = document.getElementById('modalMultipageFalsa');
+        if (modalAntigo) modalAntigo.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'modalMultipageFalsa';
+        modal.style.cssText = `
+            position: fixed; inset: 0; z-index: 99999; background: rgba(15, 23, 42, 0.7);
+            display: flex; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(5px);
+        `;
+
+        let miniaturasHtml = dados.fotos.map((img, i) => `
+            <img src="${img}" onclick="document.getElementById('fotoPrincipalModal').src='${img}'" style="width: 65px; height: 45px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid ${i === 0 ? '#4f46e5' : '#cbd5e1'};">
+        `).join('');
+
+        modal.innerHTML = `
+            <div style="background: #ffffff; width: 100%; max-width: 750px; border-radius: 16px; overflow: hidden; max-height: 92vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative;">
+                
+                <!-- Barra de Topo da Multipage Falsa -->
+                <div style="padding: 16px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; background: #f8fafc;">
+                    <span style="font-size: 13px; font-weight: 700; color: #4f46e5; text-transform: uppercase;">Detalhes do Anúncio</span>
+                    <button onclick="document.getElementById('modalMultipageFalsa').remove()" style="background: #e2e8f0; border: none; width: 30px; height: 30px; border-radius: 50%; font-weight: bold; cursor: pointer; color: #334155;">&times;</button>
+                </div>
+
+                <!-- Conteúdo com Rolagem -->
+                <div style="overflow-y: auto; padding: 24px;">
+                    <!-- Galeria de 5 Fotos -->
+                    <div style="margin-bottom: 20px;">
+                        <img id="fotoPrincipalModal" src="${dados.fotos[0]}" style="width: 100%; height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; background: #e2e8f0;">
+                        <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;">
+                            ${miniaturasHtml}
+                        </div>
+                    </div>
+
+                    <!-- Textos -->
+                    <span style="font-size: 12px; background: #e0e7ff; color: #4f46e5; padding: 4px 10px; border-radius: 6px; font-weight: 700;">${dados.categoria}</span>
+                    <h2 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 10px 0 8px 0;">${dados.titulo}</h2>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.5; margin-bottom: 20px;">${dados.descricao}</p>
+
+                    <!-- Ações de Contato Direto -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 24px;">
+                        <a href="https://wa.me/${dados.whatsapp}" target="_blank" style="background: #22c55e; color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; text-decoration: none;">WhatsApp</a>
+                        <a href="https://instagram.com/${dados.instagram}" target="_blank" style="background: #ec4899; color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; text-decoration: none;">Instagram</a>
+                        <a href="mailto:${dados.email}" style="background: #6366f1; color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; text-decoration: none;">E-mail</a>
+                    </div>
+
+                    <!-- Mapa Real Integrado -->
+                    <div style="border-top: 1px solid #e2e8f0; padding-top: 16px;">
+                        <h4 style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 6px;">Localização</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 10px;">${dados.localizacao}</p>
+                        <div style="width: 100%; height: 180px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0;">
+                            <iframe width="100%" height="100%" frameborder="0" src="https://maps.google.com/maps?q=${encodeURIComponent(dados.localizacao)}&output=embed"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+</script>
             </article>
 
         </div>
