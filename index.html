@@ -1317,256 +1317,370 @@ async function fetchAnunciosDoSupabase() {
 }
 </script>
 
-        <!-- SEÇÃO PROMOÇÕES EXPANDIDA E COMPACTA (Estilo Carrossel Horizontal) -->
-<section id="promocoes" class="promocoes-section-advanced">
-    <div class="promo-header-wrapper">
-        <div>
-            <h2 class="promo-main-title">🔥 Promoções em Destaque</h2>
-            <p class="section-description">As melhores oportunidades e descontos válidos esta semana no Garavelo.</p>
-        </div>
-        <div class="promo-nav-hints">
-            <span>Arraste para o lado &rarr;</span>
-        </div>
-    </div>
-    
-    <!-- Container de Rolagem Horizontal Infinita/Fluida -->
-    <div class="promo-carousel-container" id="promoCarousel">
+        <!-- SEÇÃO PROMOÇÕES DE ELITE (10/10 UI/UX) -->
+<section id="promocoes" class="elite-promos-section">
+    <div class="elite-container">
         
-        <!-- Promoção 1 -->
-        <div class="promo-card-item">
-            <div class="promo-card-media">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e" alt="Cosméticos" class="promo-img">
-                <span class="promo-badge-off">30% OFF</span>
+        <!-- Cabeçalho de Impacto -->
+        <div class="elite-header">
+            <div class="elite-title-group">
+                <span class="elite-badge-top">⚡ Oportunidades Verificadas</span>
+                <h2 class="elite-main-title">Promoções Imperdíveis no Garavelo</h2>
+                <p class="elite-subtitle">Descontos exclusivos negociados diretamente com os lojistas parceiros da região.</p>
             </div>
-            <div class="promo-card-content">
-                <span class="promo-store-name">Alfa Cosméticos</span>
-                <h3 class="promo-card-title">30% OFF em Cosméticos</h3>
-                <p class="promo-card-text">Na Alfa Cosméticos, leve três produtos e pague apenas dois. Aproveite!</p>
-                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
+            <div class="elite-controls-hint">
+                <span>Arraste para explorar &rarr;</span>
             </div>
         </div>
 
-        <!-- Promoção 2 -->
-        <div class="promo-card-item">
-            <div class="promo-card-media">
-                <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193c" alt="Automotivo" class="promo-img">
-                <span class="promo-badge-off">Grátis</span>
+        <!-- Carrossel / Grid de Elite -->
+        <div class="elite-carousel" id="elitePromoCarousel">
+            
+            <!-- Card 1 -->
+            <div class="elite-card">
+                <div class="elite-card-media">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e" alt="Cosméticos" class="elite-img">
+                    <div class="elite-floating-tag">💎 Exclusivo Garavelo</div>
+                    <div class="elite-discount-badge">-30% OFF</div>
+                </div>
+                <div class="elite-card-body">
+                    <div class="elite-meta-row">
+                        <span class="elite-store">Alfa Cosméticos</span>
+                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
+                    </div>
+                    <h3 class="elite-card-heading">30% OFF em Cosméticos Selecionados</h3>
+                    <p class="elite-card-desc">Na compra de três produtos da linha importada, pague apenas dois. Promoção válida enquanto durarem os estoques.</p>
+                    <div class="elite-card-footer">
+                        <div class="elite-price-box">
+                            <span class="elite-price-label">Condição</span>
+                            <span class="elite-price-val">Leve 3, Pague 2</span>
+                        </div>
+                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
+                    </div>
+                </div>
             </div>
-            <div class="promo-card-content">
-                <span class="promo-store-name">Auto Center Mernitus</span>
-                <h3 class="promo-card-title">Troca de Óleo e Alinhamento</h3>
-                <p class="promo-card-text">Ganhe alinhamento completo na compra de 4 pneus no Auto Center.</p>
-                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
-            </div>
-        </div>
 
-        <!-- Promoção 3 -->
-        <div class="promo-card-item">
-            <div class="promo-card-media">
-                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1" alt="Barbearia" class="promo-img">
-                <span class="promo-badge-off">R$ 35</span>
+            <!-- Card 2 -->
+            <div class="elite-card">
+                <div class="elite-card-media">
+                    <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193c" alt="Automotivo" class="elite-img">
+                    <div class="elite-floating-tag">🚗 Automotivo</div>
+                    <div class="elite-discount-badge bg-green">Grátis</div>
+                </div>
+                <div class="elite-card-body">
+                    <div class="elite-meta-row">
+                        <span class="elite-store">Auto Center Mernitus</span>
+                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
+                    </div>
+                    <h3 class="elite-card-heading">Troca de Óleo + Alinhamento Grátis</h3>
+                    <p class="elite-card-desc">Ganhe alinhamento computadorizado completo e balanceamento na compra de 4 pneus novos.</p>
+                    <div class="elite-card-footer">
+                        <div class="elite-price-box">
+                            <span class="elite-price-label">Economia Média</span>
+                            <span class="elite-price-val">R$ 150,00</span>
+                        </div>
+                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
+                    </div>
+                </div>
             </div>
-            <div class="promo-card-content">
-                <span class="promo-store-name">Santa Bárbara Barbearia</span>
-                <h3 class="promo-card-title">Cortes e Barba por R$35</h3>
-                <p class="promo-card-text">Promoção especial na barbearia de segunda a quarta-feira.</p>
-                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
-            </div>
-        </div>
 
-        <!-- Promoção 4 (Extra adicionada para preencher e dar volume) -->
-        <div class="promo-card-item">
-            <div class="promo-card-media">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Gastronomia" class="promo-img">
-                <span class="promo-badge-off">20% OFF</span>
+            <!-- Card 3 -->
+            <div class="elite-card">
+                <div class="elite-card-media">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1" alt="Barbearia" class="elite-img">
+                    <div class="elite-floating-tag">✂️ Bem-Estar</div>
+                    <div class="elite-discount-badge bg-purple">R$ 35</div>
+                </div>
+                <div class="elite-card-body">
+                    <div class="elite-meta-row">
+                        <span class="elite-store">Santa Bárbara Barbearia</span>
+                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
+                    </div>
+                    <h3 class="elite-card-heading">Combo Corte Estilizado + Barba</h3>
+                    <p class="elite-card-desc">Promoção especial de segunda a quarta-feira com profissionais especializados em visagismo.</p>
+                    <div class="elite-card-footer">
+                        <div class="elite-price-box">
+                            <span class="elite-price-label">Preço Especial</span>
+                            <span class="elite-price-val">R$ 35,00</span>
+                        </div>
+                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
+                    </div>
+                </div>
             </div>
-            <div class="promo-card-content">
-                <span class="promo-store-name">Burger Artesanal Garavelo</span>
-                <h3 class="promo-card-title">Combo Duplo + Batata</h3>
-                <p class="promo-card-text">Na compra de qualquer burger artesanal, ganhe refil de batata frita.</p>
-                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
-            </div>
-        </div>
 
-        <!-- Promoção 5 (Extra adicionada) -->
-        <div class="promo-card-item">
-            <div class="promo-card-media">
-                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f" alt="Fitness" class="promo-img">
-                <span class="promo-badge-off">Grátis</span>
+            <!-- Card 4 -->
+            <div class="elite-card">
+                <div class="elite-card-media">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Gastronomia" class="elite-img">
+                    <div class="elite-floating-tag">🍔 Gastronomia</div>
+                    <div class="elite-discount-badge">-20% OFF</div>
+                </div>
+                <div class="elite-card-body">
+                    <div class="elite-meta-row">
+                        <span class="elite-store">Burger Artesanal Garavelo</span>
+                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
+                    </div>
+                    <h3 class="elite-card-heading">Combo Duplo Monster + Fritas</h3>
+                    <p class="elite-card-desc">Dois burgers artesanais de 180g com blend da casa, queijo prato duplo e batata rústica inclusa.</p>
+                    <div class="elite-card-footer">
+                        <div class="elite-price-box">
+                            <span class="elite-price-label">Super Desconto</span>
+                            <span class="elite-price-val">20% OFF</span>
+                        </div>
+                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
+                    </div>
+                </div>
             </div>
-            <div class="promo-card-content">
-                <span class="promo-store-name">CrossFit Garavelo</span>
-                <h3 class="promo-card-title">1ª Semana Experimental</h3>
-                <p class="promo-card-text">Venha conhecer nossa estrutura sem pagar absolutamente nada.</p>
-                <a href="#contato" class="promo-action-btn">Resgatar Cupom</a>
-            </div>
-        </div>
 
+        </div>
     </div>
 </section>
 
 <style>
-    .promocoes-section-advanced {
+    .elite-promos-section {
         width: 100%;
-        max-width: 1200px;
-        margin: 40px auto;
-        padding: 0 20px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        padding: 60px 0;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
-    .promo-header-wrapper {
+    .elite-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    .elite-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        margin-bottom: 20px;
+        margin-bottom: 32px;
     }
 
-    .promo-main-title {
-        font-size: 24px;
+    .elite-badge-top {
+        display: inline-block;
+        background: #e0e7ff;
+        color: #4338ca;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+
+    .elite-main-title {
+        font-size: 28px;
         font-weight: 800;
         color: #0f172a;
-        margin: 0 0 4px 0;
+        margin: 0 0 6px 0;
+        letter-spacing: -0.5px;
     }
 
-    .promo-section-description {
-        font-size: 14px;
-        color: #64748b;
+    .elite-subtitle {
+        font-size: 15px;
+        color: #475569;
         margin: 0;
     }
 
-    .promo-nav-hints {
+    .elite-controls-hint {
         font-size: 13px;
         font-weight: 600;
-        color: #4f46e5;
+        color: #6366f1;
+        display: none;
     }
 
-    /* Carrossel Horizontal Compacto e Elegante */
-    .promo-carousel-container {
-        display: flex;
-        gap: 20px;
-        overflow-x: auto;
-        padding-bottom: 15px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
-        scrollbar-color: #cbd5e1 #f1f5f9;
+    @media (min-width: 768px) {
+        .elite-controls-hint { display: block; }
     }
 
-    .promo-carousel-container::-webkit-scrollbar {
-        height: 8px;
+    /* Carrossel Estilo Netflix / Airbnb */
+    .elite-carousel {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
     }
 
-    .promo-carousel-container::-webkit-scrollbar-track {
-        background: #f1f5f9;
-        border-radius: 4px;
+    @media (min-width: 1024px) {
+        .elite-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 24px;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 transparent;
+        }
+        .elite-carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+        .elite-carousel::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .elite-card {
+            flex: 0 0 310px;
+            scroll-snap-align: start;
+        }
     }
 
-    .promo-carousel-container::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-    }
-
-    /* Card Individual Otimizado (Não ocupa espaço vertical excessivo) */
-    .promo-card-item {
-        flex: 0 0 280px;
-        scroll-snap-align: start;
+    /* Card de Elite */
+    .elite-card {
         background: #ffffff;
-        border-radius: 14px;
+        border-radius: 20px;
         overflow: hidden;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .promo-card-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+    .elite-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.12);
+        border-color: #cbd5e1;
     }
 
-    .promo-card-media {
+    .elite-card-media {
         position: relative;
-        height: 130px;
+        height: 180px;
         width: 100%;
-        background: #f1f5f9;
+        background: #e2e8f0;
+        overflow: hidden;
     }
 
-    .promo-img {
+    .elite-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.5s ease;
     }
 
-    .promo-badge-off {
+    .elite-card:hover .elite-img {
+        transform: scale(1.05);
+    }
+
+    .elite-floating-tag {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #ef4444;
+        top: 12px;
+        left: 12px;
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(8px);
         color: #ffffff;
         font-size: 11px;
-        font-weight: 800;
-        padding: 4px 8px;
-        border-radius: 6px;
-        text-transform: uppercase;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 8px;
     }
 
-    .promo-card-content {
-        padding: 16px;
+    .elite-discount-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: #dc2626;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+
+    .elite-discount-badge.bg-green { background: #16a34a; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); }
+    .elite-discount-badge.bg-purple { background: #7c3aed; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3); }
+
+    .elite-card-body {
+        padding: 20px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
     }
 
-    .promo-store-name {
-        font-size: 11px;
+    .elite-meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .elite-store {
+        font-size: 12px;
         font-weight: 700;
-        color: #4f46e5;
+        color: #6366f1;
         text-transform: uppercase;
-        margin-bottom: 4px;
         letter-spacing: 0.5px;
     }
 
-    .promo-card-title {
-        font-size: 15px;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0 0 6px 0;
-        line-height: 1.3;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+    .elite-verified {
+        font-size: 11px;
+        color: #059669;
+        font-weight: 600;
     }
 
-    .promo-card-text {
-        font-size: 12px;
+    .elite-card-heading {
+        font-size: 17px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+    }
+
+    .elite-card-desc {
+        font-size: 13px;
         color: #64748b;
-        margin: 0 0 14px 0;
-        line-height: 1.4;
+        margin: 0 0 20px 0;
+        line-height: 1.5;
+        flex-grow: 1;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        flex-grow: 1;
     }
 
-    .promo-action-btn {
-        background: #f8fafc;
-        color: #4f46e5;
-        border: 1px solid #c7d2fe;
-        text-align: center;
-        padding: 8px;
-        border-radius: 8px;
-        font-size: 12px;
+    .elite-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 14px;
+        margin-top: auto;
+    }
+
+    .elite-price-box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .elite-price-label {
+        font-size: 10px;
+        color: #94a3b8;
         font-weight: 600;
-        text-decoration: none;
-        transition: background 0.2s, color 0.2s;
+        text-transform: uppercase;
     }
 
-    .promo-action-btn:hover {
-        background: #4f46e5;
+    .elite-price-val {
+        font-size: 14px;
+        font-weight: 800;
+        color: #0f172a;
+    }
+
+    .elite-btn-action {
+        background: #6366f1;
         color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 9px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.1s ease;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    }
+
+    .elite-btn-action:hover {
+        background: #4f46e5;
+        transform: scale(1.02);
     }
 </style>
 
