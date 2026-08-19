@@ -1317,124 +1317,70 @@ async function fetchAnunciosDoSupabase() {
 }
 </script>
 
-        <!-- SEÇÃO PROMOÇÕES DE ELITE (10/10 UI/UX) -->
+        <!-- SEÇÃO PROMOÇÕES DE ELITE - COM MODAL DE 5 FOTOS E PERSISTÊNCIA -->
 <section id="promocoes" class="elite-promos-section">
     <div class="elite-container">
         
-        <!-- Cabeçalho de Impacto -->
         <div class="elite-header">
             <div class="elite-title-group">
                 <span class="elite-badge-top">⚡ Oportunidades Verificadas</span>
                 <h2 class="elite-main-title">Promoções Imperdíveis no Garavelo</h2>
-                <p class="elite-subtitle">Descontos exclusivos negociados diretamente com os lojistas parceiros da região.</p>
+                <p class="elite-subtitle">Clique em qualquer anúncio para abrir os detalhes completos, visualizar a galeria com 5 fotos e interagir.</p>
             </div>
             <div class="elite-controls-hint">
-                <span>Arraste para explorar &rarr;</span>
+                <span>Clique no anúncio para abrir &rarr;</span>
             </div>
         </div>
 
-        <!-- Carrossel / Grid de Elite -->
-        <div class="elite-carousel" id="elitePromoCarousel">
-            
-            <!-- Card 1 -->
-            <div class="elite-card">
-                <div class="elite-card-media">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e" alt="Cosméticos" class="elite-img">
-                    <div class="elite-floating-tag">💎 Exclusivo Garavelo</div>
-                    <div class="elite-discount-badge">-30% OFF</div>
-                </div>
-                <div class="elite-card-body">
-                    <div class="elite-meta-row">
-                        <span class="elite-store">Alfa Cosméticos</span>
-                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
-                    </div>
-                    <h3 class="elite-card-heading">30% OFF em Cosméticos Selecionados</h3>
-                    <p class="elite-card-desc">Na compra de três produtos da linha importada, pague apenas dois. Promoção válida enquanto durarem os estoques.</p>
-                    <div class="elite-card-footer">
-                        <div class="elite-price-box">
-                            <span class="elite-price-label">Condição</span>
-                            <span class="elite-price-val">Leve 3, Pague 2</span>
-                        </div>
-                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
-                    </div>
-                </div>
-            </div>
+        <!-- Grid de Cards Interativos -->
+        <div class="elite-grid" id="elitePromoGrid"></div>
 
-            <!-- Card 2 -->
-            <div class="elite-card">
-                <div class="elite-card-media">
-                    <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193c" alt="Automotivo" class="elite-img">
-                    <div class="elite-floating-tag">🚗 Automotivo</div>
-                    <div class="elite-discount-badge bg-green">Grátis</div>
-                </div>
-                <div class="elite-card-body">
-                    <div class="elite-meta-row">
-                        <span class="elite-store">Auto Center Mernitus</span>
-                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
-                    </div>
-                    <h3 class="elite-card-heading">Troca de Óleo + Alinhamento Grátis</h3>
-                    <p class="elite-card-desc">Ganhe alinhamento computadorizado completo e balanceamento na compra de 4 pneus novos.</p>
-                    <div class="elite-card-footer">
-                        <div class="elite-price-box">
-                            <span class="elite-price-label">Economia Média</span>
-                            <span class="elite-price-val">R$ 150,00</span>
-                        </div>
-                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="elite-card">
-                <div class="elite-card-media">
-                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1" alt="Barbearia" class="elite-img">
-                    <div class="elite-floating-tag">✂️ Bem-Estar</div>
-                    <div class="elite-discount-badge bg-purple">R$ 35</div>
-                </div>
-                <div class="elite-card-body">
-                    <div class="elite-meta-row">
-                        <span class="elite-store">Santa Bárbara Barbearia</span>
-                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
-                    </div>
-                    <h3 class="elite-card-heading">Combo Corte Estilizado + Barba</h3>
-                    <p class="elite-card-desc">Promoção especial de segunda a quarta-feira com profissionais especializados em visagismo.</p>
-                    <div class="elite-card-footer">
-                        <div class="elite-price-box">
-                            <span class="elite-price-label">Preço Especial</span>
-                            <span class="elite-price-val">R$ 35,00</span>
-                        </div>
-                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="elite-card">
-                <div class="elite-card-media">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Gastronomia" class="elite-img">
-                    <div class="elite-floating-tag">🍔 Gastronomia</div>
-                    <div class="elite-discount-badge">-20% OFF</div>
-                </div>
-                <div class="elite-card-body">
-                    <div class="elite-meta-row">
-                        <span class="elite-store">Burger Artesanal Garavelo</span>
-                        <span class="elite-verified" title="Loja Verificada">✔ Verificada</span>
-                    </div>
-                    <h3 class="elite-card-heading">Combo Duplo Monster + Fritas</h3>
-                    <p class="elite-card-desc">Dois burgers artesanais de 180g com blend da casa, queijo prato duplo e batata rústica inclusa.</p>
-                    <div class="elite-card-footer">
-                        <div class="elite-price-box">
-                            <span class="elite-price-label">Super Desconto</span>
-                            <span class="elite-price-val">20% OFF</span>
-                        </div>
-                        <a href="#resgatar" class="elite-btn-action" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
 </section>
+
+<!-- MODAL GLOBAL DE DETALHES (TELA CHEIA / UI ALTO NÍVEL) -->
+<div id="modalDetalhesElite" class="elite-modal-overlay" style="display: none;">
+    <div class="elite-modal-container">
+        <button class="elite-modal-close" onclick="fecharModalElite()">&times; Fechar</button>
+        
+        <div class="elite-modal-content-scroll">
+            <!-- Galeria com 5 Fotos -->
+            <div class="elite-gallery-wrapper">
+                <div class="elite-main-image-container">
+                    <img id="modalFotoPrincipal" src="" alt="Foto Principal" class="elite-main-img">
+                    <span id="modalTagCategoria" class="elite-modal-tag">Categoria</span>
+                </div>
+                <div class="elite-thumbs-grid" id="modalThumbsList">
+                    <!-- As 5 miniaturas entram aqui via JS -->
+                </div>
+            </div>
+
+            <!-- Informações Detalhadas -->
+            <div class="elite-modal-info">
+                <div class="elite-modal-meta">
+                    <span id="modalLojaNome" class="elite-modal-store">Nome da Loja</span>
+                    <span class="elite-modal-verified">✔ Verificada</span>
+                </div>
+                <h2 id="modalTituloAnuncio" class="elite-modal-title">Título do Anúncio</h2>
+                <p id="modalDescAnuncio" class="elite-modal-desc">Descrição completa do anúncio...</p>
+
+                <!-- Área de Anotações Persistentes no Cache -->
+                <div class="elite-cache-box">
+                    <label for="eliteCacheInput"><strong>Suas Anotações / Informações (Salvas no Cache do Navegador):</strong></label>
+                    <textarea id="eliteCacheInput" placeholder="Digite lembretes ou dados adicionais que deseja salvar permanentemente aqui..."></textarea>
+                    <button class="elite-cache-save-btn" onclick="salvarNoCacheDoNavegador()">Salvar Informação no Cache</button>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="elite-modal-actions">
+                    <a id="modalBtnWhats" href="#" target="_blank" class="elite-action-btn whats">Falar no WhatsApp</a>
+                    <a id="modalBtnInsta" href="#" target="_blank" class="elite-action-btn insta">Ver no Instagram</a>
+                    <button class="elite-action-btn coupon" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
     .elite-promos-section {
@@ -1475,7 +1421,6 @@ async function fetchAnunciosDoSupabase() {
         font-weight: 800;
         color: #0f172a;
         margin: 0 0 6px 0;
-        letter-spacing: -0.5px;
     }
 
     .elite-subtitle {
@@ -1488,50 +1433,22 @@ async function fetchAnunciosDoSupabase() {
         font-size: 13px;
         font-weight: 600;
         color: #6366f1;
-        display: none;
     }
 
-    @media (min-width: 768px) {
-        .elite-controls-hint { display: block; }
-    }
-
-    /* Carrossel Estilo Netflix / Airbnb */
-    .elite-carousel {
+    /* Grid Responsivo Inteligente */
+    .elite-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 24px;
     }
 
-    @media (min-width: 1024px) {
-        .elite-carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 24px;
-            padding-bottom: 20px;
-            scrollbar-width: thin;
-            scrollbar-color: #cbd5e1 transparent;
-        }
-        .elite-carousel::-webkit-scrollbar {
-            height: 6px;
-        }
-        .elite-carousel::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        .elite-card {
-            flex: 0 0 310px;
-            scroll-snap-align: start;
-        }
-    }
-
-    /* Card de Elite */
     .elite-card {
         background: #ffffff;
         border-radius: 20px;
         overflow: hidden;
         border: 1px solid rgba(226, 232, 240, 0.8);
-        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+        cursor: pointer;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
@@ -1539,8 +1456,8 @@ async function fetchAnunciosDoSupabase() {
 
     .elite-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.12);
-        border-color: #cbd5e1;
+        box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.15);
+        border-color: #6366f1;
     }
 
     .elite-card-media {
@@ -1588,9 +1505,6 @@ async function fetchAnunciosDoSupabase() {
         box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     }
 
-    .elite-discount-badge.bg-green { background: #16a34a; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); }
-    .elite-discount-badge.bg-purple { background: #7c3aed; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3); }
-
     .elite-card-body {
         padding: 20px;
         display: flex;
@@ -1610,7 +1524,6 @@ async function fetchAnunciosDoSupabase() {
         font-weight: 700;
         color: #6366f1;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
 
     .elite-verified {
@@ -1633,10 +1546,6 @@ async function fetchAnunciosDoSupabase() {
         margin: 0 0 20px 0;
         line-height: 1.5;
         flex-grow: 1;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     .elite-card-footer {
@@ -1645,12 +1554,6 @@ async function fetchAnunciosDoSupabase() {
         align-items: center;
         border-top: 1px solid #f1f5f9;
         padding-top: 14px;
-        margin-top: auto;
-    }
-
-    .elite-price-box {
-        display: flex;
-        flex-direction: column;
     }
 
     .elite-price-label {
@@ -1666,23 +1569,392 @@ async function fetchAnunciosDoSupabase() {
         color: #0f172a;
     }
 
-    .elite-btn-action {
+    .elite-btn-fake {
         background: #6366f1;
         color: #ffffff;
         font-size: 12px;
         font-weight: 700;
-        padding: 9px 14px;
+        padding: 8px 14px;
         border-radius: 10px;
-        text-decoration: none;
-        transition: background 0.2s ease, transform 0.1s ease;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
     }
 
-    .elite-btn-action:hover {
-        background: #4f46e5;
-        transform: scale(1.02);
+    /* ESTILOS DO MODAL ESPECIAL DE ALTO NÍVEL */
+    .elite-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(8px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .elite-modal-container {
+        background: #ffffff;
+        width: 100%;
+        max-width: 850px;
+        max-height: 90vh;
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+        position: relative;
+        animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .elite-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 10;
+        background: #0f172a;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: background 0.2s;
+    }
+
+    .elite-modal-close:hover {
+        background: #dc2626;
+    }
+
+    .elite-modal-content-scroll {
+        overflow-y: auto;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .elite-gallery-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .elite-main-image-container {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        background: #0f172a;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .elite-main-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .elite-modal-tag {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(15, 23, 42, 0.8);
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .elite-thumbs-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+
+    .elite-thumb-img {
+        width: 100%;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.2s;
+    }
+
+    .elite-thumb-img:hover, .elite-thumb-img.active {
+        border-color: #6366f1;
+        transform: scale(1.03);
+    }
+
+    .elite-modal-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    .elite-modal-store {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6366f1;
+        text-transform: uppercase;
+    }
+
+    .elite-modal-verified {
+        font-size: 12px;
+        color: #059669;
+        font-weight: 700;
+    }
+
+    .elite-modal-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 10px 0;
+    }
+
+    .elite-modal-desc {
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .elite-cache-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 16px;
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .elite-cache-box label {
+        font-size: 12px;
+        color: #0f172a;
+    }
+
+    .elite-cache-box textarea {
+        width: 100%;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 13px;
+        resize: none;
+        font-family: inherit;
+    }
+
+    .elite-cache-save-btn {
+        align-self: flex-end;
+        background: #0f172a;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .elite-modal-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .elite-action-btn {
+        padding: 12px;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .elite-action-btn.whats { background: #22c55e; color: #fff; }
+    .elite-action-btn.insta { background: #ec4899; color: #fff; }
+    .elite-action-btn.coupon { background: #6366f1; color: #fff; }
+
+    @media (max-width: 640px) {
+        .elite-thumbs-grid { grid-template-columns: repeat(5, 1fr); }
+        .elite-modal-actions { grid-template-columns: 1fr; }
     }
 </style>
+
+<script>
+    // Banco de dados com exatamente 5 fotos para cada anúncio
+    const anunciosEliteDB = [
+        {
+            id: 1,
+            loja: "Alfa Cosméticos",
+            categoria: "Cosméticos",
+            titulo: "30% OFF em Cosméticos Selecionados",
+            descricao: "Na compra de três produtos da linha importada, pague apenas dois. Promoção válida enquanto durarem os estoques nas lojas físicas do Garavelo.",
+            desconto: "-30% OFF",
+            condicao: "Leve 3, Pague 2",
+            whatsapp: "5562999999999",
+            instagram: "alfacosmeticos",
+            fotos: [
+                "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e",
+                "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908",
+                "https://images.unsplash.com/photo-1571781926291-c477ebfd024b",
+                "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d",
+                "https://images.unsplash.com/photo-1512290900722-9a70f8a85d39"
+            ]
+        },
+        {
+            id: 2,
+            loja: "Auto Center Mernitus",
+            categoria: "Automotivo",
+            titulo: "Troca de Óleo + Alinhamento Grátis",
+            descricao: "Ganhe alinhamento computadorizado completo e balanceamento na compra de 4 pneus novos. Maior durabilidade e segurança para seu veículo.",
+            desconto: "Grátis",
+            condicao: "R$ 150,00",
+            whatsapp: "5562988888888",
+            instagram: "autocentermernitus",
+            fotos: [
+                "https://images.unsplash.com/photo-1486006920555-c77dce18193c",
+                "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e",
+                "https://images.unsplash.com/photo-1580273916550-e323be2ae537",
+                "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f",
+                "https://images.unsplash.com/photo-1487754180451-c456f719a1fc"
+            ]
+        },
+        {
+            id: 3,
+            loja: "Santa Bárbara Barbearia",
+            categoria: "Bem-Estar",
+            titulo: "Combo Corte Estilizado + Barba",
+            descricao: "Promoção especial de segunda a quarta-feira com profissionais especializados em visagismo, toalha quente e cerveja artesanal cortesia.",
+            desconto: "R$ 35",
+            condicao: "R$ 35,00",
+            whatsapp: "5562977777777",
+            instagram: "santabarbarabarbearia",
+            fotos: [
+                "https://images.unsplash.com/photo-1503951914875-452162b0f3f1",
+                "https://images.unsplash.com/photo-1532712938310-34cb3982ef74",
+                "https://images.unsplash.com/photo-1622286342621-4bd786c2447c",
+                "https://images.unsplash.com/photo-1512861482164-9b7a0ff46d84",
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+            ]
+        },
+        {
+            id: 4,
+            loja: "Burger Artesanal Garavelo",
+            categoria: "Gastronomia",
+            titulo: "Combo Duplo Monster + Fritas",
+            descricao: "Dois burgers artesanais de 180g com blend da casa, queijo prato duplo, bacon crocante e batata rústica inclusa por um preço imperdível.",
+            desconto: "-20% OFF",
+            condicao: "20% OFF",
+            whatsapp: "5562966666666",
+            instagram: "burgergaravelo",
+            fotos: [
+                "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
+                "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+                "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
+                "https://images.unsplash.com/photo-1550547660-d9450f859349",
+                "https://images.unsplash.com/photo-1565299585323-38d6b0865b47"
+            ]
+        }
+    ];
+
+    let anuncioAtualId = null;
+
+    // Renderiza a grade de anúncios inicial
+    function renderizarGridElite() {
+        const grid = document.getElementById('elitePromoGrid');
+        if (!grid) return;
+
+        grid.innerHTML = anunciosEliteDB.map(item => `
+            <div class="elite-card" onclick="abrirModalElite(${item.id})">
+                <div class="elite-card-media">
+                    <img src="${item.fotos[0]}" alt="${item.titulo}" class="elite-img">
+                    <span class="elite-floating-tag">📷 5 Fotos</span>
+                    <span class="elite-discount-badge">${item.desconto}</span>
+                </div>
+                <div class="elite-card-body">
+                    <div class="elite-meta-row">
+                        <span class="elite-store">${item.loja}</span>
+                        <span class="elite-verified">✔ Verificada</span>
+                    </div>
+                    <h3 class="elite-card-heading">${item.titulo}</h3>
+                    <p class="elite-card-desc">${item.descricao}</p>
+                    <div class="elite-card-footer">
+                        <div>
+                            <span class="elite-price-label">Oferta</span>
+                            <div class="elite-price-val">${item.condicao}</div>
+                        </div>
+                        <span class="elite-btn-fake">Ver Detalhes</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Abre o modal de alto nível com as 5 fotos e cache persistente
+    function abrirModalElite(id) {
+        const anuncio = anunciosEliteDB.find(a => a.id === id);
+        if (!anuncio) return;
+        anuncioAtualId = id;
+
+        document.getElementById('modalFotoPrincipal').src = anuncio.fotos[0];
+        document.getElementById('modalTagCategoria').textContent = anuncio.categoria;
+        document.getElementById('modalLojaNome').textContent = anuncio.loja;
+        document.getElementById('modalTituloAnuncio').textContent = anuncio.titulo;
+        document.getElementById('modalDescAnuncio').textContent = anuncio.descricao;
+        
+        document.getElementById('modalBtnWhats').href = `https://wa.me/${anuncio.whatsapp}`;
+        document.getElementById('modalBtnInsta').href = `https://instagram.com/${anuncio.instagram}`;
+
+        // Renderiza as 5 miniaturas com interatividade de troca
+        const thumbsContainer = document.getElementById('modalThumbsList');
+        thumbsContainer.innerHTML = anuncio.fotos.map((foto, index) => `
+            <img src="${foto}" class="elite-thumb-img ${index === 0 ? 'active' : ''}" onclick="trocarFotoPrincipal(this, '${foto}')" alt="Foto miniatura ${index + 1}">
+        `).join('');
+
+        // Carrega dado salvo no cache do navegador (localStorage)
+        const notaSalva = localStorage.getItem(`cache_anuncio_${id}`) || '';
+        document.getElementById('eliteCacheInput').value = notaSalva;
+
+        document.getElementById('modalDetalhesElite').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Trava o scroll da página fundo
+    }
+
+    // Troca a foto principal ao clicar nas miniaturas
+    function trocarFotoPrincipal(elemento, urlFoto) {
+        document.getElementById('modalFotoPrincipal').src = urlFoto;
+        document.querySelectorAll('.elite-thumb-img').forEach(img => img.classList.remove('active'));
+        elemento.classList.add('active');
+    }
+
+    // Fecha o modal
+    function fecharModalElite() {
+        document.getElementById('modalDetalhesElite').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Salva informações permanentemente no cache local do navegador
+    function salvarNoCacheDoNavegador() {
+        if (!anuncioAtualId) return;
+        const texto = document.getElementById('eliteCacheInput').value;
+        localStorage.setItem(`cache_anuncio_${anuncioAtualId}`, texto);
+        alert('Informações salvas com sucesso de forma persistente no cache do navegador!');
+    }
+
+    // Inicializa na carga da página
+    window.addEventListener('DOMContentLoaded', renderizarGridElite);
+</script>
 
         <!-- SEÇÃO CRIAR ANÚNCIO (PROTEGIDADA POR LOGIN COM 3 DADOS + FOTO/FORMULÁRIO) -->
         <section id="anunciar-secao">
