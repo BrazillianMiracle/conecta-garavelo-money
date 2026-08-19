@@ -3,741 +3,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Garavelo | Classificados & Guia Comercial Oficial</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Supabase JS Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Portal Garavelo | Seu Portal de Compras e Negócios na Região</title>
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
+        /* --- ESTILOS CSS INCORPORADOS (SEM CORTES) --- */
         :root {
-            --primary: #064E3B;
-            --primary-light: #10B981;
-            --accent: #F59E0B;
-            --dark: #0F172A;
-            --gray-bg: #F8FAFC;
-            --gray-border: #E2E8F0;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --white: #FFFFFF;
-            --danger: #EF4444;
-            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --radius-card: 20px;
+            --primary-color: #FF8C00;
+            --light-orange: #FFA07A;
+            --dark-text: #2c3e50;
+            --white: #ffffff;
+            --bg-color: #f4f4f4;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--gray-bg); color: var(--text-main); line-height: 1.6; }
+        * {
+            box-sizing: border-box;
+        }
 
-        /* Header Principal */
-        header { background: var(--white); border-bottom: 1px solid var(--gray-border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .header-container { max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-        .logo-area { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 45px; height: 45px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 1.4rem; }
-        .logo-area h1 { font-size: 1.35rem; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
-        .logo-area p { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
 
-        .location-selector { display: flex; align-items: center; background: #F1F5F9; padding: 10px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--dark); gap: 8px; border: 1px solid var(--gray-border); }
-        .location-selector i { color: var(--primary-light); }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
 
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .btn-auth { background: var(--primary); color: white; border: none; padding: 10px 22px; border-radius: 50px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.1s; font-size: 0.9rem; }
-        .btn-auth:hover { background: #022C22; transform: translateY(-1px); }
-        .btn-vip-panel { background: var(--accent); color: var(--dark); border: none; padding: 10px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; display: none; align-items: center; gap: 8px; font-size: 0.9rem; }
+        /* 1. CABEÇALHO */
+        .main-header {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        /* Categorias Scrollável */
-        .categories-bar { background: var(--white); border-bottom: 1px solid var(--gray-border); padding: 14px 0; overflow-x: auto; white-space: nowrap; }
-        .categories-container { max-width: 1320px; margin: 0 auto; padding: 0 24px; display: flex; gap: 12px; }
-        .cat-chip { padding: 9px 18px; background: #F8FAFC; border: 1px solid var(--gray-border); border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
-        .cat-chip:hover, .cat-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            flex-wrap: wrap;
+        }
 
-        /* Layout Principal */
-        .main-layout { max-width: 1320px; margin: 35px auto; padding: 0 24px; }
-        .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 15px; }
-        .section-title { font-size: 1.6rem; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
-        .user-status-tag { font-size: 0.85rem; font-weight: 600; padding: 6px 14px; background: #E2E8F0; border-radius: 50px; color: var(--text-muted); }
+        .logo h1 {
+            color: var(--white);
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-        /* Grid de Anúncios */
-        .ads-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 28px; }
-        @media(max-width: 768px) { .ads-grid { grid-template-columns: 1fr; } }
+        .logo p {
+            color: var(--dark-text);
+            margin: -5px 0 0 0;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
 
-        .ad-card { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; display: flex; flex-direction: column; position: relative; }
-        .ad-card:hover { transform: translateY(-5px); box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1); }
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-        /* Container de Fotos do Card (Mini Carrossel ou Imagem Principal) */
-        .ad-img-container { height: 220px; position: relative; background: #0F172A; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .ad-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .ad-card:hover .ad-img-container img { transform: scale(1.03); }
+        .main-nav li {
+            margin: 0 15px;
+        }
 
-        .badge-cat { position: absolute; top: 16px; left: 16px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 6px; z-index: 2; }
-        .badge-price { position: absolute; bottom: 16px; right: 16px; background: var(--primary); color: white; padding: 6px 14px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .main-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
 
-        .ad-content { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .ad-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-        
-        .ad-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.85rem; flex-wrap: wrap; }
-        .rating { color: var(--dark); font-weight: 700; display: flex; align-items: center; gap: 4px; }
-        .rating i { color: #FBBF24; }
-        
-        .badge-verified { background: #EFF6FF; color: #1D4ED8; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.75rem; display: flex; align-items: center; gap: 4px; }
-        .badge-vip { background: #FEF3C7; color: #B45309; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.75rem; display: flex; align-items: center; gap: 4px; }
+        .main-nav a:hover {
+            color: var(--dark-text);
+        }
 
-        .ad-location { color: var(--text-muted); font-size: 0.85rem; display: flex; align-items: center; gap: 6px; margin-bottom: 16px; }
-        
-        .ad-footer-box { border-top: 1px dashed var(--gray-border); padding-top: 14px; display: flex; align-items: center; justify-content: space-between; }
-        .btn-details { background: var(--primary); color: white; border: none; padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-        .btn-details:hover { background: #022C22; }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
 
-        /* Modal Perfil Detalhado (Estilo Orkut / Imersivo) */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
-        .modal-card { background: var(--white); width: 100%; max-width: 900px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); overflow: hidden; animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; max-height: 90vh; }
-        @keyframes scaleUp { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .user-actions a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.9em;
+        }
 
-        .modal-header { background: var(--dark); color: white; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
-        .modal-body { padding: 30px; overflow-y: auto; flex: 1; }
-        .close-modal { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        .user-actions .btn-login {
+            background-color: var(--light-orange);
+            color: var(--dark-text);
+        }
 
-        /* Sistema de 5 Fotos Perfeitas no Modal (Sem Corte) */
-        .gallery-container { margin-bottom: 24px; }
-        .main-photo-preview { width: 100%; height: 360px; background: #0F172A; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 12px; border: 1px solid var(--gray-border); }
-        .main-photo-preview img { width: 100%; height: 100%; object-fit: contain; background: #000; }
-        
-        .thumbs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-        .thumb-item { height: 75px; background: #E2E8F0; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; }
-        .thumb-item.active { border-color: var(--primary-light); }
-        .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
+        .user-actions .btn-cadastrar {
+            background-color: var(--white);
+            color: var(--dark-text);
+        }
 
-        .profile-info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 20px; }
-        @media(max-width: 768px) { .profile-info-grid { grid-template-columns: 1fr; } }
+        .user-actions .btn-google {
+            background-color: var(--white);
+            color: #4285f4;
+        }
 
-        .info-box { background: #F8FAFC; border: 1px solid var(--gray-border); padding: 20px; border-radius: 16px; }
-        .info-box h4 { font-size: 1rem; color: var(--dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        
-        .action-buttons-box { display: flex; flex-direction: column; gap: 12px; }
-        .btn-whatsapp { background: #25D366; color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1rem; transition: background 0.2s; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-        .btn-whatsapp:hover { background: #20ba5a; }
-        .btn-instagram { background: #E1306C; color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1rem; transition: background 0.2s; box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3); }
-        .btn-instagram:hover { background: #c8235b; }
+        /* 2. LAYOUT PRINCIPAL E SEÇÕES */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #ddd;
+        }
 
-        .coupon-box-modal { background: #F0FDF4; border: 1.5px dashed var(--primary-light); padding: 16px; border-radius: 12px; margin-top: 16px; display: flex; justify-content: space-between; align-items: center; }
-        .coupon-code-text { font-weight: 900; color: var(--primary); font-size: 1.2rem; letter-spacing: 1px; background: #DCFCE7; padding: 6px 12px; border-radius: 8px; }
+        section h2 {
+            font-size: 2em;
+            color: var(--dark-text);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
-        /* Painel VIP / Admin Formulário */
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
-        .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--gray-border); border-radius: 12px; font-size: 0.95rem; background: var(--white); }
-        .form-control:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
-        .btn-submit-ad { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; margin-top: 10px; }
-        
-        .admin-delete-btn { background: var(--danger); color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; margin-top: 15px; }
+        .section-description {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
 
-        footer { background: var(--dark); color: #94A3B8; text-align: center; padding: 40px 20px; margin-top: 60px; font-size: 0.85rem; }
+        /* 3. ANÚNCIOS (NOSSOS PARCEIROS) */
+        .anuncios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .anuncio-item {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .anuncio-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .anuncio-content {
+            padding: 20px;
+        }
+
+        .anuncio-content h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .anuncio-content p {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .tag-parceiro {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* 4. PROMOÇÕES E UTILIDADE */
+        .promo-cards-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .promo-card, .utilidade-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #fff8f5;
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+        }
+
+        .promo-card h3, .utilidade-card h3 {
+            color: var(--dark-text);
+            margin-top: 0;
+        }
+
+        .btn-ver-oferta, .btn-contato {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-ver-oferta:hover, .btn-contato:hover {
+            background-color: var(--light-orange);
+        }
+
+        .novidade-destaque {
+            background-color: #e6e6e6;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .anuncie-box {
+            background-color: var(--dark-text);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .anuncie-box p {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        /* 5. RODAPÉ */
+        .main-footer {
+            background-color: var(--dark-text);
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        /* 6. RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                justify-content: center;
+                margin: 15px 0;
+            }
+            .main-nav li {
+                margin: 5px 0;
+            }
+            .user-actions {
+                margin-top: 10px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header Principal -->
-    <header>
-        <div class="header-container">
-            <div class="logo-area">
-                <div class="logo-icon"><i class="fas fa-store-alt"></i></div>
-                <div>
-                    <h1>Portal Garavelo</h1>
-                    <p>Classificados & Guia Comercial Oficial</p>
-                </div>
+    <!-- CABEÇALHO -->
+    <header class="main-header">
+        <div class="header-content container">
+            <div class="logo">
+                <h1>PORTAL GARAVELO</h1>
+                <p>Seu portal de compras no Garavelo</p>
             </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#parceiros">Nossos Parceiros</a></li>
+                    <li><a href="#promocoes">Promoções</a></li>
+                    <li><a href="#novidades">Novidades</a></li>
+                    <li><a href="#anuncie">Anuncie</a></li>
+                    <li><a href="#utilidade">Utilidade Pública</a></li>
+                </ul>
+            </nav>
 
-            <div class="location-selector">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Região Garavelo, Aparecida de Goiânia</span>
-            </div>
-
-            <div class="header-actions">
-                <button class="btn-vip-panel" id="btnVipPanel" onclick="openVipDashboard()">
-                    <i class="fas fa-crown"></i> Painel VIP (Criar Anúncio)
-                </button>
-                <button class="btn-auth" id="btnAuth">
-                    <i class="fab fa-google"></i> Entrar com Google
-                </button>
+            <div class="user-actions">
+                <a href="#" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="#" class="btn-cadastrar"><i class="fas fa-user-plus"></i> Cadastre-se</a>
+                <a href="#" class="btn-google"><i class="fab fa-google"></i> Entrar</a>
             </div>
         </div>
     </header>
 
-    <!-- Barra de Categorias -->
-    <nav class="categories-bar">
-        <div class="categories-container" id="categoryFilter">
-            <button class="cat-chip active" data-cat="all"><i class="fas fa-th-large"></i> Todos os Anúncios</button>
-            <button class="cat-chip" data-cat="alimentacao"><i class="fas fa-utensils"></i> Alimentação & Bares</button>
-            <button class="cat-chip" data-cat="moda"><i class="fas fa-tshirt"></i> Moda & Acessórios</button>
-            <button class="cat-chip" data-cat="servicos"><i class="fas fa-tools"></i> Serviços & Automotivo</button>
-            <button class="cat-chip" data-cat="educacao"><i class="fas fa-graduation-cap"></i> Educação & Cursos</button>
-            <button class="cat-chip" data-cat="tecnologia"><i class="fas fa-laptop-code"></i> Tecnologia & Web</button>
-        </div>
-    </nav>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+        <!-- SEÇÃO PARCEIROS -->
+        <section id="parceiros" class="section-parceiros">
+            <h2>⭐ Nossos Parceiros em Destaque</h2>
+            <p class="section-description">Confira as melhores lojas e serviços que patrocinam o Portal Garavelo e trazem ofertas exclusivas para você![cite: 10]</p>
+            
+            <div class="anuncios-grid">
+                <div class="anuncio-item partner" data-loja="Zé do Peixe">
+                    <div class="anuncio-content">
+                        <h3>Zé do Peixe - Peixaria</h3>
+                        <p>O melhor e mais fresco pescado da região! Qualidade e tradição no Garavelo.[cite: 10]</p>
+                        <span class="tag-parceiro">PARCEIRO GOLD</span>
+                    </div>
+                </div>
 
-    <!-- Conteúdo Principal -->
-    <main class="main-layout">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">Destaques e Ofertas da Região</h2>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Encontre produtos, comércios e serviços verificados no Garavelo.</p>
+                <div class="anuncio-item partner" data-loja="Supermercado Tatico">
+                    <div class="anuncio-content">
+                        <h3>Supermercado Tatico</h3>
+                        <p>Variedade e economia para sua casa. Encontre tudo em um só lugar.[cite: 10]</p>
+                        <span class="tag-parceiro">SUPER DESTAQUE</span>
+                    </div>
+                </div>
+
+                <div class="anuncio-item partner" data-loja="Subway">
+                    <div class="anuncio-content">
+                        <h3>Subway Garavelo</h3>
+                        <p>Montamos seu lanche na hora! Ingredientes frescos todos os dias.[cite: 10]</p>
+                        <span class="tag-parceiro">ALIMENTAÇÃO</span>
+                    </div>
+                </div>
             </div>
-            <div class="user-status-tag" id="userStatusTag">Visitante (Modo Leitura)</div>
-        </div>
+        </section>
 
-        <!-- Grid de Anúncios -->
-        <div class="ads-grid" id="adsGrid">
-            <!-- Injetado dinamicamente via JavaScript -->
-        </div>
+        <!-- SEÇÃO PROMOÇÕES -->
+        <section id="promocoes" class="section-promocoes">
+            <h2>🔥 Promoções da Semana</h2>
+            <p class="section-description">Ofertas imperdíveis de nossos parceiros válidas apenas esta semana![cite: 10]</p>
+            
+            <div class="promo-cards-container">
+                <div class="promo-card">
+                    <h3>30% OFF em Cosméticos</h3>
+                    <p>Na <strong>Alfa Cosméticos</strong>, leve três produtos e pague apenas dois. Válido até domingo.[cite: 10]</p>
+                    <a href="#" class="btn-ver-oferta">Ver Oferta</a>
+                </div>
+                <div class="promo-card">
+                    <h3>Pneu com Desconto</h3>
+                    <p>Troca de óleo e alinhamento grátis na compra de 4 pneus no <strong>Auto Center Mernitus</strong>.[cite: 10]</p>
+                    <a href="#" class="btn-ver-oferta">Ver Oferta</a>
+                </div>
+                <div class="promo-card">
+                    <h3>Cortes e Barba por R$35</h3>
+                    <p>Promoção especial na <strong>Santa Bárbara Barbearia</strong> de segunda a quarta.[cite: 10]</p>
+                    <a href="#" class="btn-ver-oferta">Ver Oferta</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO NOVIDADES -->
+        <section id="novidades" class="section-novidades">
+            <h2>✨ Novidades no Garavelo</h2>
+            <p class="section-description">Fique por dentro das lojas recém-inauguradas e dos serviços que acabaram de chegar na região.[cite: 10]</p>
+            
+            <div class="novidade-destaque">
+                <p><strong>Nova Inauguração:</strong> A loja <strong>Bakarana Toys</strong> abriu as portas na Avenida da Igualdade, trazendo a maior variedade de brinquedos e colecionáveis. Visite![cite: 10]</p>
+            </div>
+            <div class="novidade-destaque">
+                <p><strong>Serviço Digital:</strong> O <strong>Lopes Certificação Digital</strong> agora oferece emissão de certificados A1 e A3 sem sair do Garavelo, facilitando a vida de empresas locais.[cite: 10]</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO ANUNCIE -->
+        <section id="anuncie" class="section-anuncie">
+            <h2>📢 Anuncie Conosco</h2>
+            <p class="section-description">Destaque sua loja para milhares de clientes na região. Seu negócio no topo![cite: 10]</p>
+            <div class="anuncie-box">
+                <p>Pacotes a partir de <strong>R$99,90/mês</strong>. Inclui banner rotativo e destaque na seção "Nossos Parceiros".[cite: 10]</p>
+                <a href="#" class="btn-contato">Fale com um Consultor <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO UTILIDADE PÚBLICA -->
+        <section id="utilidade" class="section-utilidade">
+            <h2>🤝 Utilidade Pública Garavelo</h2>
+            
+            <div class="utilidade-card">
+                <h3>Vagas de Emprego</h3>
+                <p>A <strong>Rede Celular</strong> está contratando vendedores com experiência. Envie seu currículo para contato@redecelular.com.br.</p>
+            </div>
+            
+            <div class="utilidade-card">
+                <h3>Eventos Esportivos</h3>
+                <p>Grande final do Campeonato de Futebol de Salão do Garavelo neste sábado (15h) na Praça da Igualdade.</p>
+            </div>
+            
+            <div class="utilidade-card">
+                <h3>Alerta Comunitário</h3>
+                <p>Campanha de vacinação contra a gripe disponível no <strong>Laboratório Citocenter</strong>. Horário especial neste fim de semana.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Modal Universal (Detalhes, Perfil e Painel VIP) -->
-    <div class="modal-overlay" id="mainModal">
-        <div class="modal-card">
-            <div class="modal-header">
-                <h3 id="modalTitle">Detalhes do Estabelecimento</h3>
-                <button class="close-modal" id="closeModal">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Conteúdo dinâmico preenchido por script -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Rodapé -->
-    <footer>
-        <div style="max-width: 1320px; margin: 0 auto;">
-            <p>&copy; 2026 Portal Garavelo. Todos os direitos reservados. O maior hub de classificados da região.</p>
+    <!-- RODAPÉ -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Portal Garavelo. Todos os direitos reservados. | Desenvolvido para a Comunidade Local.</p>
         </div>
     </footer>
 
-    <!-- Script Completo de Integração Supabase, Renderização e Gestão de Anúncios -->
+    <!-- SCRIPT JAVASCRIPT INCORPORADO (SEM CORTES) -->
     <script>
-        // ==========================================
-        // CONFIGURAÇÃO SUPABASE (INSIRA SEUS DADOS AQUI)
-        // ==========================================
-        const SUPABASE_URL = 'https://SEU-PROJETO.supabase.co'; // Cole sua URL do Supabase aqui
-        const SUPABASE_ANON_KEY = 'SUA-CHAVE-ANON-AQUI';       // Cole sua Chave Anon do Supabase aqui
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lista de lojas fictícias para injeção dinâmica avançada
+            const lojasParceiras = [
+                { nome: "Mega Eletrônicos Celulares", desc: "Os últimos lançamentos em smartphones e acessórios. Assinatura de planos.", tag: "TECNOLOGIA" },
+                { nome: "Novo Mundo", desc: "Eletrodomésticos, móveis e eletrônicos com preços de fábrica. Entrega rápida no Garavelo.", tag: "VAREJO" },
+                { nome: "Bancos do Brasil", desc: "Agência completa para pessoa física e jurídica. Soluções financeiras para a região.", tag: "FINANÇAS" },
+                { nome: "Marmitaria Pegui Goiano", desc: "Marmitas caseiras deliciosas e saudáveis. Peça seu almoço!", tag: "ALIMENTAÇÃO" },
+                { nome: "Funerária Padrão Garavelo", desc: "Serviços póstumos com dignidade e respeito. Plantão 24h.", tag: "SERVIÇOS" },
+                { nome: "Óticas Lumiar", desc: "Exames de vista e armações modernas. Cuide da sua saúde visual.", tag: "SAÚDE" }
+            ];
 
-        let supabaseClient = null;
-        let currentUser = null;
-        let isVipAdmin = false;
+            const anunciosGrid = document.querySelector('.anuncios-grid');
 
-        try {
-            if (window.supabase && SUPABASE_URL.startsWith('https://')) {
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            }
-        } catch (err) {
-            console.log("Supabase inicializado em modo simulador local.");
-        }
+            // Função para criar o elemento HTML do anúncio dinamicamente
+            const criarAnuncio = (loja) => {
+                const div = document.createElement('div');
+                div.classList.add('anuncio-item', 'partner');
+                div.setAttribute('data-loja', loja.nome);
 
-        // ==========================================
-        // BANCO DE DADOS LOCAL ROBUSTO (MUITOS ANÚNCIOS)
-        // ==========================================
-        let anunciosData = [
-            {
-                id: 1,
-                title: "Buffet Festa Encantada & Eventos",
-                category: "alimentacao",
-                categoryName: "Lazer & Eventos",
-                rating: 5.0,
-                reviews: 96,
-                price: "A partir de R$ 1.200",
-                location: "Residencial Garavelo",
-                phone: "62998887766",
-                instagram: "buffetfestaencantada",
-                verified: true,
-                vip: true,
-                description: "O melhor espaço infantil e para casamentos do Garavelo. Brinquedos modernos, buffet completo com salgados fresquinhos e equipe treinada.",
-                coupon: "GARAVELO10",
-                couponDesc: "10% de desconto em qualquer pacote fechado à vista.",
-                photos: [
-                    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 2,
-                title: "Agência Web Pixel Criativo",
-                category: "tecnologia",
-                categoryName: "Tecnologia & Web",
-                rating: 4.9,
-                reviews: 38,
-                price: "Orçamento Sob Consulta",
-                location: "Jardim Tiradentes / Garavelo",
-                phone: "62981112233",
-                instagram: "pixelcriativoweb",
-                verified: true,
-                vip: true,
-                description: "Especialistas em criação de sites profissionais, tráfego pago para comércios locais e identidade visual de alto impacto para sua empresa.",
-                coupon: "PIXELVIP",
-                couponDesc: "Auditoria gratuita de marketing digital para sua loja.",
-                photos: [
-                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 3,
-                title: "Padaria & Confeitaria Pão do Cerrado",
-                category: "alimentacao",
-                categoryName: "Alimentação & Bares",
-                rating: 4.8,
-                reviews: 112,
-                price: "Variado",
-                location: "Residencial Garavelo",
-                phone: "6232881122",
-                instagram: "paodocerradogaravelo",
-                verified: true,
-                vip: true,
-                description: "Pão francês quentinho de 30 em 30 minutos, bolos caseiros, salgados finos, sucos naturais e caldos à noite.",
-                coupon: "CERRADO5",
-                couponDesc: "R$ 5,00 de desconto em compras acima de R$ 40,00.",
-                photos: [
-                    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 4,
-                title: "Boutique Elegance Moda Feminina",
-                category: "moda",
-                categoryName: "Moda & Acessórios",
-                rating: 4.7,
-                reviews: 54,
-                price: "Peças a partir de R$ 59,90",
-                location: "Residencial Garavelo",
-                phone: "62992223344",
-                instagram: "elegancemodagaravelo",
-                verified: true,
-                vip: true,
-                description: "Moda feminina casual e executiva. Vestidos, blusas exclusivas e acessórios que acompanham as tendências mundiais.",
-                coupon: "ELEGANCE20",
-                couponDesc: "20% de desconto à vista na nova coleção primavera.",
-                photos: [
-                    "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 5,
-                title: "Oficina Mecânica & Auto Elétrica Garavelo",
-                category: "servicos",
-                categoryName: "Serviços & Automotivo",
-                rating: 4.9,
-                reviews: 82,
-                price: "Alinhamento R$ 60,00",
-                location: "Polo Empresarial / Garavelo",
-                phone: "62988776655",
-                instagram: "mecanicagaravelo",
-                verified: true,
-                vip: true,
-                description: "Injeção eletrônica, motor, suspensão, troca de óleo e auto elétrica completa para veículos nacionais e importados.",
-                coupon: "AUTOREV",
-                couponDesc: "Diagnóstico computadorizado gratuito ao realizar troca de óleo.",
-                photos: [
-                    "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 6,
-                title: "Reforço Escolar & Idiomas Saber+",
-                category: "educacao",
-                categoryName: "Educação & Cursos",
-                rating: 5.0,
-                reviews: 41,
-                price: "Mensalidades acessíveis",
-                location: "Residencial Garavelo",
-                phone: "62991114455",
-                instagram: "sabermaisgaravelo",
-                verified: true,
-                vip: true,
-                description: "Aulas de reforço para ensino fundamental e médio, além de inglês e espanhol com professores nativos e especializados.",
-                coupon: "SABERVIP",
-                couponDesc: "Matrícula isenta para moradores do Garavelo.",
-                photos: [
-                    "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
-                ]
-            }
-        ];
-
-        // ==========================================
-        // RENDERIZAÇÃO DA GRADE DE ANÚNCIOS
-        // ==========================================
-        const adsGrid = document.getElementById('adsGrid');
-        const mainModal = document.getElementById('mainModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBody = document.getElementById('modalBody');
-        const closeModal = document.getElementById('closeModal');
-        const btnAuth = document.getElementById('btnAuth');
-        const btnVipPanel = document.getElementById('btnVipPanel');
-        const userStatusTag = document.getElementById('userStatusTag');
-
-        function renderAds(filter = 'all') {
-            adsGrid.innerHTML = '';
-            const filtered = filter === 'all' ? anunciosData : anunciosData.filter(ad => ad.category === filter);
-
-            if(filtered.length === 0) {
-                adsGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-muted); font-size: 1.1rem;"><i class="fas fa-folder-open" style="font-size: 2.5rem; margin-bottom: 10px; display: block;"></i> Nenhum anúncio encontrado nesta categoria.</div>`;
-                return;
-            }
-
-            filtered.forEach(ad => {
-                const card = document.createElement('div');
-                card.className = 'ad-card';
-                card.innerHTML = `
-                    <div class="ad-img-container">
-                        <span class="badge-cat"><i class="fas fa-tag"></i> ${ad.categoryName}</span>
-                        <span class="badge-price">${ad.price}</span>
-                        <img src="${ad.photos[0]}" alt="${ad.title}">
-                    </div>
-                    <div class="ad-content">
-                        <div>
-                            <h3 class="ad-title">${ad.title}</h3>
-                            <div class="ad-meta">
-                                <span class="rating"><i class="fas fa-star"></i> ${ad.rating} (${ad.reviews})</span>
-                                ${ad.verified ? '<span class="badge-verified"><i class="fas fa-check-circle"></i> Verificada</span>' : ''}
-                                ${ad.vip ? '<span class="badge-vip"><i class="fas fa-crown"></i> VIP</span>' : ''}
-                            </div>
-                            <div class="ad-location"><i class="fas fa-map-marker-alt"></i> ${ad.location}</div>
-                        </div>
-                        <div class="ad-footer-box">
-                            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-images"></i> ${ad.photos.length} fotos disponíveis</span>
-                            <button class="btn-details" onclick="openAdDetails(${ad.id})">Ver Perfil Completo</button>
-                        </div>
+                div.innerHTML = `
+                    <div class="anuncio-content">
+                        <h3>${loja.nome}</h3>
+                        <p>${loja.desc}</p>
+                        <span class="tag-parceiro">${loja.tag}</span>
                     </div>
                 `;
-                card.addEventListener('click', () => openAdDetails(ad.id));
-                adsGrid.appendChild(card);
-            });
-        }
+                return div;
+            };
 
-        // Filtros de Categoria
-        document.querySelectorAll('.cat-chip').forEach(chip => {
-            chip.addEventListener('click', (e) => {
-                document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-                const targetChip = e.currentTarget;
-                targetChip.classList.add('active');
-                renderAds(targetChip.getAttribute('data-cat'));
-            });
-        });
-
-        // ==========================================
-        // ABRIR PERFIL DETALHADO (ESTILO ORKUT / 5 FOTOS SEM CORTE)
-        // ==========================================
-        window.openAdDetails = function(id) {
-            const ad = anunciosData.find(item => item.id === id);
-            if(!ad) return;
-
-            modalTitle.textContent = ad.title;
-            
-            // Monta as miniaturas e foto principal sem corte (object-fit: contain)
-            let thumbsHTML = '';
-            ad.photos.forEach((photo, index) => {
-                thumbsHTML += `<div class="thumb-item ${index === 0 ? 'active' : ''}" onclick="changeMainPhoto('${photo}', this)"><img src="${photo}" alt="Foto ${index+1}"></div>`;
+            // Injetar os anúncios adicionais na grade
+            lojasParceiras.forEach(loja => {
+                anunciosGrid.appendChild(criarAnuncio(loja));
             });
 
-            modalBody.innerHTML = `
-                <div class="gallery-container">
-                    <div class="main-photo-preview" id="mainPhotoBox">
-                        <img src="${ad.photos[0]}" id="activeMainImg" alt="${ad.title}">
-                    </div>
-                    <div class="thumbs-grid">
-                        ${thumbsHTML}
-                    </div>
-                </div>
-
-                <div class="profile-info-grid">
-                    <div>
-                        <div class="info-box" style="margin-bottom: 16px;">
-                            <h4 style="color: var(--primary);"><i class="fas fa-info-circle"></i> Sobre o Anúncio</h4>
-                            <p style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 12px;">${ad.description}</p>
-                            <p style="font-weight: 700; color: var(--dark); font-size: 1.05rem;"><i class="fas fa-tag"></i> Preço / Condição: <span style="color: var(--primary);">${ad.price}</span></p>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;"><i class="fas fa-map-marker-alt"></i> Localização: ${ad.location}</p>
-                        </div>
-
-                        ${ad.coupon ? `
-                            <div class="coupon-box-modal">
-                                <div>
-                                    <h4 style="color: #064E3B; margin-bottom: 2px;"><i class="fas fa-ticket-alt"></i> Cupom de Desconto Exclusivo</h4>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted);">${ad.couponDesc}</p>
-                                </div>
-                                <div class="coupon-code-text">${ad.coupon}</div>
-                            </div>
-                        ` : ''}
-                    </div>
-
-                    <div class="action-buttons-box">
-                        <div class="info-box" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <h4 style="margin-bottom: 15px;"><i class="fas fa-headset"></i> Canais Oficiais</h4>
-                                <a href="https://wa.me/55${ad.phone}?text=Olá,%20vi%20seu%20anúncio%20no%20Portal%20Garavelo%20e%20gostaria%20de%20mais%20informações!" target="_blank" class="btn-whatsapp">
-                                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Chamar no WhatsApp
-                                </a>
-                                <a href="https://instagram.com/${ad.instagram}" target="_blank" class="btn-instagram" style="margin-top: 10px;">
-                                    <i class="fab fa-instagram" style="font-size: 1.2rem;"></i> Ver Instagram Oficial
-                                </a>
-                            </div>
-
-                            ${isVipAdmin ? `
-                                <button class="admin-delete-btn" onclick="deleteAd(${ad.id})">
-                                    <i class="fas fa-trash-alt"></i> Excluir Anúncio (Admin VIP)
-                                </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
-            mainModal.style.display = 'flex';
-        }
-
-        // Trocar foto principal no modal clicando nas miniaturas
-        window.changeMainPhoto = function(photoUrl, thumbElement) {
-            document.getElementById('activeMainImg').src = photoUrl;
-            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
-            thumbElement.classList.add('active');
-        }
-
-        // ==========================================
-        // AUTENTICAÇÃO REAL COM SUPABASE & GOOGLE
-        // ==========================================
-        btnAuth.addEventListener('click', async () => {
-            if (supabaseClient) {
-                const { error } = await supabaseClient.auth.signInWithOAuth({
-                    provider: 'google',
-                    options: { redirectTo: window.location.origin }
+            // Interatividade de cliques nos cards de anúncios
+            document.querySelectorAll('.anuncio-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    alert(`Você clicou no anúncio do(a) ${item.getAttribute('data-loja')}. Redirecionando para a página do parceiro...`);
                 });
-                if (error) alert("Erro ao autenticar com Google: " + error.message);
-            } else {
-                // Simulação Interativa VIP para testes imediatos sem travar o usuário
-                currentUser = { email: "admin.vip@portalgaravelo.com.br" };
-                isVipAdmin = true;
-                updateUIAfterLogin();
-                alert("Simulação de Login Google realizada com sucesso! Você agora é um Admin VIP.");
-            }
-        });
+            });
 
-        // Checar sessão ativa ao carregar a página
-        async function checkSupabaseSession() {
-            if (!supabaseClient) return;
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            if (session && session.user) {
-                currentUser = session.user;
-                // Valida se o email está na tabela de VIPs do Supabase
-                await validateVipAdminStatus(currentUser.email);
-            }
-        }
-
-        async function validateVipAdminStatus(email) {
-            if (!supabaseClient) return;
-            try {
-                const { data, error } = await supabaseClient
-                    .from('vips_admins')
-                    .select('email')
-                    .eq('email', email)
-                    .single();
-                
-                if (data) {
-                    isVipAdmin = true;
-                    updateUIAfterLogin();
-                }
-            } catch (err) {
-                console.log("Usuário não cadastrado como VIP admin no banco.");
-            }
-        }
-
-        function updateUIAfterLogin() {
-            if (currentUser) {
-                btnAuth.innerHTML = `<i class="fas fa-user-check"></i> ${currentUser.email.split('@')[0]}`;
-                btnVipPanel.style.display = 'inline-flex';
-                userStatusTag.textContent = "Logado como Membro VIP (Admin)";
-                userStatusTag.style.background = "#FEF3C7";
-                userStatusTag.style.color = "#B45309";
-            }
-        }
-
-        // ==========================================
-        // PAINEL VIP (CRIAR E EXCLUIR ANÚNCIOS)
-        // ==========================================
-        window.openVipDashboard = function() {
-            modalTitle.textContent = "Painel VIP - Gestão de Anúncios";
-            modalBody.innerHTML = `
-                <div style="margin-bottom: 24px; background: #F8FAFC; padding: 16px; border-radius: 12px; border: 1px solid var(--gray-border);">
-                    <h4 style="color: var(--dark); margin-bottom: 6px;"><i class="fas fa-crown"></i> Área Restrita para Membros VIP</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">Publique novos comércios, insira até 5 fotos reais e configure cupons de desconto.</p>
-                </div>
-
-                <form id="formCreateAd" onsubmit="handleCreateAd(event)">
-                    <div class="form-group">
-                        <label>Título do Anúncio / Estabelecimento</label>
-                        <input type="text" class="form-control" id="adTitle" placeholder="Ex: Pizzaria Bella Napoli" required>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>Categoria</label>
-                            <select class="form-control" id="adCategory">
-                                <option value="alimentacao">Alimentação & Bares</option>
-                                <option value="moda">Moda & Acessórios</option>
-                                <option value="servicos">Serviços & Automotivo</option>
-                                <option value="educacao">Educação & Cursos</option>
-                                <option value="tecnologia">Tecnologia & Web</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Preço / Oferta Principal</label>
-                            <input type="text" class="form-control" id="adPrice" placeholder="Ex: Pratos a partir de R$ 35" required>
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>WhatsApp (Apenas números com DDD)</label>
-                            <input type="text" class="form-control" id="adPhone" placeholder="Ex: 62999998888" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Instagram Oficial (Sem @)</label>
-                            <input type="text" class="form-control" id="adInstagram" placeholder="Ex: pizzariabellanapoli" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Localização (Bairro / Região)</label>
-                        <input type="text" class="form-control" id="adLocation" value="Residencial Garavelo" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Descrição Completa</label>
-                        <textarea class="form-control" id="adDescription" rows="3" placeholder="Descreva os diferenciais do seu negócio..." required></textarea>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>Código do Cupom de Desconto</label>
-                            <input type="text" class="form-control" id="adCoupon" placeholder="Ex: PIZZA10">
-                        </div>
-                        <div class="form-group">
-                            <label>Regra do Cupom</label>
-                            <input type="text" class="form-control" id="adCouponDesc" placeholder="Ex: 10% de desconto na pizza família">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Links das 5 Fotos (URLs Diretas das Imagens)</label>
-                        <input type="text" class="form-control" id="photo1" placeholder="Foto 1 (Principal) URL" style="margin-bottom: 6px;" required>
-                        <input type="text" class="form-control" id="photo2" placeholder="Foto 2 URL" style="margin-bottom: 6px;">
-                        <input type="text" class="form-control" id="photo3" placeholder="Foto 3 URL" style="margin-bottom: 6px;">
-                        <input type="text" class="form-control" id="photo4" placeholder="Foto 4 URL" style="margin-bottom: 6px;">
-                        <input type="text" class="form-control" id="photo5" placeholder="Foto 5 URL">
-                    </div>
-
-                    <button type="submit" class="btn-submit-ad">Publicar Anúncio no Portal Agora</button>
-                </form>
-            `;
-            mainModal.style.display = 'flex';
-        }
-
-        window.handleCreateAd = async function(e) {
-            e.preventDefault();
-            
-            const title = document.getElementById('adTitle').value;
-            const category = document.getElementById('adCategory').value;
-            const price = document.getElementById('adPrice').value;
-            const phone = document.getElementById('adPhone').value;
-            const instagram = document.getElementById('adInstagram').value;
-            const location = document.getElementById('adLocation').value;
-            const description = document.getElementById('adDescription').value;
-            const coupon = document.getElementById('adCoupon').value;
-            const couponDesc = document.getElementById('adCouponDesc').value;
-
-            const photos = [
-                document.getElementById('photo1').value,
-                document.getElementById('photo2').value,
-                document.getElementById('photo3').value,
-                document.getElementById('photo4').value,
-                document.getElementById('photo5').value
-            ].filter(url => url.trim() !== '');
-
-            const catNames = {
-                alimentacao: "Alimentação & Bares",
-                moda: "Moda & Acessórios",
-                servicos: "Serviços & Automotivo",
-                educacao: "Educação & Cursos",
-                tecnologia: "Tecnologia & Web"
-            };
-
-            const novoAnuncio = {
-                id: Date.now(),
-                title,
-                category,
-                categoryName: catNames[category] || "Geral",
-                rating: 5.0,
-                reviews: 1,
-                price,
-                location,
-                phone,
-                instagram,
-                verified: true,
-                vip: true,
-                description,
-                coupon,
-                couponDesc,
-                photos: photos.length > 0 ? photos : ["https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"]
-            };
-
-            anunciosData.unshift(novoAnuncio);
-
-            // Salvar no Supabase se configurado
-            if (supabaseClient) {
-                await supabaseClient.from('anuncios').insert([novoAnuncio]);
-            }
-
-            renderAds();
-            mainModal.style.display = 'none';
-            alert("Anúncio criado com sucesso e publicado no Portal Garavelo!");
-        }
-
-        window.deleteAd = async function(id) {
-            if(confirm("Tem certeza que deseja excluir este anúncio permanentemente?")) {
-                anunciosData = anunciosData.filter(item => item.id !== id);
-                
-                if (supabaseClient) {
-                    await supabaseClient.from('anuncios').delete().eq('id', id);
-                }
-
-                renderAds();
-                mainModal.style.display = 'none';
-                alert("Anúncio excluído com sucesso.");
-            }
-        }
-
-        // Fechar Modal
-        closeModal.addEventListener('click', () => { mainModal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if(e.target === mainModal) mainModal.style.display = 'none'; });
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', () => {
-            renderAds();
-            checkSupabaseSession();
+            // Scroll Suave para a navegação do menu superior
+            document.querySelectorAll('.main-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
