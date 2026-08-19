@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garavelo em Destaque - Promoções e Anúncios</title>
+    <title>Portal Garavelo | Seu Portal de Compras e Negócios na Região</title>
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- CSS INLINE (Tudo em um único arquivo) -->
+    <!-- Supabase CDN Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
-        /* --- ESTILIZAÇÃO ULTRA-MODERNA (UI/UX MUNDIAL) --- */
+        /* --- ESTILOS CSS COMPLETOS & UI/UX AVANÇADO --- */
         :root {
-            --bg-dark: #090d16;
-            --card-bg-dark: #111827;
-            --border-dark: rgba(255, 255, 255, 0.08);
-            --accent-glow: #6366f1;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --text-light: #f3f4f6;
-            --text-muted-dark: #9ca3af;
+            --primary-color: #FF8C00;
+            --primary-hover: #e07b00;
+            --light-orange: #fff3e6;
+            --dark-text: #2c3e50;
+            --white: #ffffff;
+            --bg-color: #f8f9fa;
+            --gray-border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -25,415 +31,1153 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            line-height: 1.7;
         }
 
-        /* --- SEÇÃO PROMOÇÕES --- */
-        .promos-section {
-            padding: 100px 0;
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        }
-
-        .promos-section .container,
-        .advertise-section .container {
-            max-width: 1280px;
+        .container {
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 20px 0;
         }
 
-        .section-header-advanced {
+        /* 1. CABEÇALHO MODERNO */
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-color), #ff6600);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 48px;
-            gap: 32px;
+            align-items: center;
+            padding: 15px 0;
             flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .section-header-advanced.center {
-            text-align: center;
-            justify-content: center;
-            display: block;
+        .logo h1 {
+            color: var(--white);
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .section-header-advanced.center .section-description {
-            margin: 0 auto;
+        .logo p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85em;
+            font-weight: 500;
         }
 
-        .global-badge {
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .main-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            font-size: 0.95em;
+        }
+
+        .main-nav a:hover {
+            opacity: 0.8;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9em;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .btn-login:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--white);
+        }
+
+        .btn-cadastrar {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-cadastrar:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-badge {
+            background: rgba(0,0,0,0.15);
+            color: var(--white);
             padding: 6px 14px;
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .global-badge.urgent {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
+        /* 2. LAYOUT PRINCIPAL E SEÇÕES */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--gray-border);
         }
 
-        .section-header-advanced h2 {
-            font-size: clamp(2rem, 3vw, 2.5rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #0f172a;
-            line-height: 1.2;
-            margin-bottom: 12px;
+        section h2 {
+            font-size: 2.2em;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .section-description {
-            font-size: 1.125rem;
             color: #64748b;
-            max-width: 600px;
-            line-height: 1.6;
+            margin-bottom: 35px;
+            font-size: 1.05em;
         }
 
-        .promo-countdown {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #f1f5f9;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            color: #475569;
-        }
-
-        .promo-countdown strong {
-            color: #0f172a;
-        }
-
-        /* Grid de Promoções Elite */
-        .promo-cards-grid {
+        /* 3. GRID DE ANÚNCIOS (PARCEIROS) */
+        .anuncios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
-        .promo-card-elite {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 24px;
-            padding: 32px;
-            position: relative;
+        .anuncio-item {
+            background-color: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
         }
 
-        .promo-card-elite:hover {
-            transform: translateY(-8px);
-            border-color: #6366f1;
-            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.15);
+        .anuncio-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
         }
 
-        .promo-badge-discount {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 12px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .anuncio-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #cbd5e1;
         }
 
-        .promo-badge-discount.automotive { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
-        .promo-badge-discount.barber { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
-
-        .promo-store {
-            font-size: 0.8125rem;
-            font-weight: 700;
-            color: #6366f1;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .promo-card-elite h3 {
-            font-size: 1.375rem;
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .promo-card-elite p {
-            font-size: 0.9375rem;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        .promo-footer {
+        .anuncio-content {
+            padding: 25px;
+            flex-grow: 1;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 20px;
         }
 
-        .validity {
-            font-size: 0.8125rem;
-            color: #94a3b8;
-            font-weight: 500;
+        .anuncio-content h3 {
+            color: var(--dark-text);
+            font-size: 1.35em;
+            margin-bottom: 10px;
         }
 
-        .btn-claim {
-            background: #0f172a;
-            color: #ffffff;
-            border: none;
-            padding: 10px 18px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-claim:hover {
-            background: #6366f1;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
-
-        /* --- SEÇÃO ANUNCIAR / PAINEL PROTEGIDO --- */
-        .advertise-section {
-            padding: 100px 0;
-            background: #090d16;
-            color: #ffffff;
-        }
-
-        .advertise-wrapper {
-            max-width: 560px;
-            margin: 48px auto 0 auto;
-        }
-
-        .secure-panel-card {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .auth-simulation-box {
-            text-align: center;
-        }
-
-        .auth-icon-wrapper {
-            width: 64px;
-            height: 64px;
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px auto;
-        }
-
-        .auth-simulation-box h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-
-        .auth-simulation-box p {
-            font-size: 0.9375rem;
-            color: #9ca3af;
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        .auth-form-quick {
-            text-align: left;
-        }
-
-        .input-group {
+        .anuncio-content p {
+            color: #475569;
+            font-size: 0.95em;
             margin-bottom: 20px;
         }
 
-        .input-group label {
+        .tag-parceiro {
+            align-self: flex-start;
+            background-color: var(--light-orange);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 4. ÁREA DE ANÚNCIO PROTEGIDA (FORMULÁRIO) */
+        .dashboard-anunciar {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-border);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
             display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #d1d5db;
-            margin-bottom: 8px;
-        }
-
-        .input-group input {
-            width: 100%;
-            background: #1f2937;
-            border: 1px solid #374151;
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #ffffff;
-            font-size: 0.9375rem;
-            transition: all 0.3s ease;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-
-        .btn-primary-glow {
-            width: 100%;
-            background: var(--accent-gradient);
-            color: #ffffff;
-            border: none;
-            padding: 14px;
-            font-size: 1rem;
             font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 12px;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            margin-bottom: 8px;
+            color: var(--dark-text);
         }
 
-        .btn-primary-glow:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 100%;
+            padding: 14px;
+            font-size: 1.05em;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .lock-notice {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--white);
+            border-radius: 16px;
+            border: 2px dashed #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .lock-notice i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* 5. MODAL DE LOGIN / CADASTRO */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .modal-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+            text-align: center;
+        }
+
+        /* OUTRAS SEÇÕES AUXILIARES */
+        .promo-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .promo-card, .utilidade-card {
+            background-color: var(--white);
+            border: 1px solid var(--gray-border);
+            border-left: 5px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .main-footer {
+            background-color: var(--dark-text);
+            color: #a8b894;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
         }
 
         @media (max-width: 768px) {
-            .promo-cards-grid {
-                grid-template-columns: 1fr;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
             }
-            .secure-panel-card {
-                padding: 24px;
+            .main-nav ul {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- SEÇÃO PROMOÇÕES -->
-    <section id="promocoes" class="promos-section" aria-labelledby="promocoes-titulo">
-        <div class="container">
+<!-- ========================================== -->
+<!-- SEÇÃO HERO GIGANTE (FÁCIL DE COLOCAR/REMOVER) -->
+<!-- ========================================== -->
+<section id="hero-gigante" style="
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    margin-bottom: 0;">
+    
+    <div style="max-width: 800px;">
+        <span style="
+            background-color: var(--primary-color, #FF8C00);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;">
+            O Maior Portal do Garavelo
+        </span>
+        
+        <h1 style="
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #ffffff;">
+            Conecte seu Negócio ao Futuro da Região
+        </h1>
+        
+        <p style="
+            font-size: 1.15em;
+            margin-bottom: 35px;
+            color: #e2e8f0;
+            line-height: 1.6;">
+            anuncie com os melhores d região 
+        </p>
+        
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="#parceiros" style="
+                background-color: var(--primary-color, #FF8C00);
+                color: #ffffff;
+                padding: 14px 28px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1em;
+                box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+                transition: background 0.3s;">
+                <i class="fas fa-store"></i> Ver Parceiros
+            </a>
             
-            <header class="section-header-advanced">
-                <div class="header-content">
-                    <span class="global-badge urgent">
-                        <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-                        Ofertas Exclusivas do Garavelo
-                    </span>
-                    <h2 id="promocoes-titulo">Promoções em Destaque</h2>
-                    <p class="section-description">As melhores oportunidades e descontos válidos esta semana selecionados especialmente para você.</p>
-                </div>
-                <div class="promo-countdown">
-                    <span class="countdown-label">Expira em breve:</span>
-                    <span class="countdown-timer"><strong>02</strong>d : <strong>14</strong>h : <strong>45</strong>m</span>
-                </div>
-            </header>
+            <a href="#anunciar-secao" style="
+                background-color: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(5px);
+                color: #ffffff;
+                border: 2px solid #ffffff;
+                padding: 14px 28px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1em;
+                transition: background 0.3s;">
+                <i class="fas fa-bullhorn"></i> Quero Anunciar
+            </a>
+        </div>
+    </div>
+</section>
+<!-- FIM DA SEÇÃO HERO GIGANTE -->    
+
+    <!-- CABEÇALHO -->
+    <header class="main-header">
+        <div class="header-content container">
+            <div class="logo">
+                <h1>CONECTA GARAVELO</h1>
+                <p> Conectando Garavelo e Região</p>
+            </div>
             
-            <div class="promo-cards-grid">
-                <!-- Card 1 -->
-                <article class="promo-card-elite">
-                    <div class="promo-badge-discount">30% OFF</div>
-                    <div class="promo-content">
-                        <span class="promo-store">Alfa Cosméticos</span>
-                        <h3>Kit de Beleza & Cuidados</h3>
-                        <p>Na compra de três produtos selecionados, leve o terceiro por nossa conta e arrase no visual.</p>
-                        <div class="promo-footer">
-                            <span class="validity">Válido até domingo</span>
-                            <button class="btn-claim" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</button>
-                        </div>
-                    </div>
-                </article>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#parceiros">Parceiros</a></li>
+                    <li><a href="#promocoes">Promoções</a></li>
+                    <li><a href="#anunciar-secao">Criar Anúncio</a></li>
+                    <li><a href="#utilidade">Utilidade Pública</a></li>
+                </ul>
+            </nav>
 
-                <!-- Card 2 -->
-                <article class="promo-card-elite">
-                    <div class="promo-badge-discount automotive">Combo Pro</div>
-                    <div class="promo-content">
-                        <span class="promo-store">Auto Center Mernitus</span>
-                        <h3>Troca de Óleo + Alinhamento</h3>
-                        <p>Ganhe alinhamento computadorizado completo e balanceamento na compra de 4 pneus novos.</p>
-                        <div class="promo-footer">
-                            <span class="validity">Vagas limitadas</span>
-                            <button class="btn-claim" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Card 3 -->
-                <article class="promo-card-elite">
-                    <div class="promo-badge-discount barber">Especial</div>
-                    <div class="promo-content">
-                        <span class="promo-store">Santa Bárbara Barbearia</span>
-                        <h3>Cortes e Barba Completa</h3>
-                        <p>Promoção especial de segunda a quarta-feira com profissionais renomados e ambiente climatizado.</p>
-                        <div class="promo-footer">
-                            <span class="validity">Seg a Qua</span>
-                            <button class="btn-claim" onclick="alert('Cupom resgatado com sucesso!')">Resgatar Cupom</button>
-                        </div>
-                    </div>
-                </article>
+            <div class="user-actions" id="userActionsContainer">
+                <!-- Dinâmico via JavaScript (Login/Logout) -->
+                <button class="btn btn-login" onclick="abrirModal('login')"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+                <button class="btn btn-cadastrar" onclick="abrirModal('cadastro')"><i class="fas fa-user-plus"></i> Cadastre-se</button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- SEÇÃO CRIAR ANÚNCIO / PAINEL PROTEGIDO -->
-    <section id="anunciar-secao" class="advertise-section" aria-labelledby="anunciar-titulo">
-        <div class="container">
-            
-            <header class="section-header-advanced center">
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+        
+        <!-- SEÇÃO PARCEIROS (UI/UX Nível Mundial) -->
+<section id="parceiros" class="partners-section" aria-labelledby="parceiros-titulo">
+    <div class="container">
+        
+        <!-- Cabeçalho com Alinhamento e Filtros Rápidos -->
+        <header class="section-header-advanced">
+            <div class="header-content">
                 <span class="global-badge">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Área do Empreendedor
+                    <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Ecossistema Verificado
                 </span>
-                <h2 id="anunciar-titulo">Anuncie seu Negócio</h2>
-                <p class="section-description">Publique sua marca instantaneamente para milhares de moradores da região do Garavelo.</p>
-            </header>
-
-            <div class="advertise-wrapper">
-                <div id="painelProtegido" class="secure-panel-card">
-                    <div class="auth-simulation-box">
-                        <div class="auth-icon-wrapper">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <h2 id="parceiros-titulo">Destaques e Ofertas da Região</h2>
+                <p class="section-description">Conecte-se com as marcas líderes, comércios locais e oportunidades exclusivas selecionadas para você.</p>
+            </div>
+            
+            <!-- Filtros de Categoria (UX Interativo) -->
+            <div class="partners-filters" role="tablist" aria-label="Filtros de parceiros">
+                <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+                <button class="filter-btn" role="tab" aria-selected="false" data-filter="patrocinados">Patrocinados</button>
+                <button class="filter-btn" role="tab" aria-selected="false" data-filter="locais">Comércios Locais</button>
+            </div>
+        </header>
+        
+        <!-- Grid de Anúncios com Layout Dinâmico -->
+        <div class="anuncios-grid-advanced" id="gridAnuncios" aria-live="polite">
+            
+            <!-- Exemplo de Card Padrão (Será injetado/gerado via JS com esta estrutura rica) -->
+            <article class="partner-card is-sponsored" data-category="patrocinados">
+                <div class="card-media">
+                    <div class="skeleton-loader"></div>
+                    <!-- Imagem real entra aqui via JS -->
+                    <span class="sponsor-tag">Patrocinado</span>
+                    <button class="bookmark-btn" aria-label="Salvar favorito" title="Salvar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="category-indicator">Serviços Financeiros</span>
+                        <div class="rating">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <span>4.9 (128)</span>
                         </div>
-                        <h3>Acesso Exclusivo para Anunciantes</h3>
-                        <p>Para garantir a segurança da nossa comunidade, informe seus dados de acesso rápido para gerenciar ou criar anúncios.</p>
-                        
-                        <form class="auth-form-quick" onsubmit="event.preventDefault(); alert('Login simulado com sucesso! Abrindo painel...');">
-                            <div class="input-group">
-                                <label for="auth-email">E-mail Profissional</label>
-                                <input type="email" id="auth-email" placeholder="seu@negocio.com" required>
+                    </div>
+                    <h3 class="card-title">Banco Parceiro Oficial - Crédito Inteligente</h3>
+                    <p class="card-text">Taxas exclusivas para investimentos e expansão do seu negócio local com aprovação digital imediata.</p>
+                    <div class="card-footer">
+                        <span class="offer-highlight">Até 20% OFF</span>
+                        <a href="#" class="cta-link">
+                            Explorar Oferta
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+<style>
+/* ==========================================
+   VARIÁVEIS E CONFIGURAÇÃO DA SEÇÃO
+   ================================---------- */
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-card: #ffffff;
+    --bg-section: #f8fafc;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partners-section {
+    background-color: var(--bg-section);
+    padding: 5rem 1.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3rem auto;
+}
+
+.section-badge {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 0.75rem;
+}
+
+.section-header h2 {
+    color: var(--text-main);
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+}
+
+.section-description {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   GRID E CARDS DE ANÚNCIOS
+   ================================---------- */
+.anuncios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.anuncio-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative;
+}
+
+.anuncio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+.anuncio-imagem-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+.anuncio-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.anuncio-card:hover .anuncio-imagem {
+    transform: scale(1.05);
+}
+
+.anuncio-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+}
+
+.anuncio-conteudo {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.anuncio-titulo {
+    color: var(--text-main);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.anuncio-texto {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.anuncio-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.anuncio-cta:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ==========================================
+   ESTADOS (SKELETON & EMPTY)
+   ================================---------- */
+.skeleton-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.skeleton-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skeleton-line {
+    height: 20px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-line.short { width: 60%; }
+.skeleton-line.long { width: 100%; height: 40px; }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+}
+</style>
+
+<script>
+/* ==========================================
+   LÓGICA DE RENDERIZAÇÃO (SUPABASE / DINÂMICO)
+   ================================---------- */
+document.addEventListener("DOMContentLoaded", () => {
+    const gridAnuncios = document.getElementById("gridAnuncios");
+
+    // 1. Exibe o Skeleton Loading enquanto busca os dados
+    renderSkeletons(3);
+
+    // Simulando a busca do Supabase (Substitua pela sua chamada real)
+    fetchAnunciosDoSupabase()
+        .then(anuncios => {
+            gridAnuncios.innerHTML = ""; // Limpa os skeletons
+
+            if (!anuncios || anuncios.length === 0) {
+                gridAnuncios.innerHTML = `
+                    <div class="empty-state">
+                        <p>Nenhum parceiro ou anúncio encontrado no momento. Volte em breve!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Renderiza os cards reais
+            anuncios.forEach(anuncio => {
+                const card = document.createElement("article");
+                card.className = "anuncio-card";
+                card.innerHTML = `
+                    <div class="anuncio-imagem-wrapper">
+                        <img src="${anuncio.imagem || 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80'}" 
+                             alt="${anuncio.titulo}" 
+                             class="anuncio-imagem" 
+                             loading="lazy">
+                        <span class="anuncio-tag">${anuncio.categoria || 'Parceiro'}</span>
+                    </div>
+                    <div class="anuncio-conteudo">
+                        <h3 class="anuncio-titulo">${anuncio.titulo}</h3>
+                        <p class="anuncio-texto">${anuncio.descricao}</p>
+                        <a href="${anuncio.link || '#'}" class="anuncio-cta" target="_blank" rel="noopener noreferrer">
+                            Ver Oferta / Conhecer
+                        </a>
+                    </div>
+                `;
+                gridAnuncios.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error("Erro ao carregar anúncios:", error);
+            gridAnuncios.innerHTML = `
+                <div class="empty-state">
+                    <p>Não foi possível carregar os parceiros no momento. Tente novamente mais tarde.</p>
+                </div>
+            `;
+        });
+});
+
+function renderSkeletons(count) {
+    const gridAnuncios = document.getElementById("gridAnuncios");
+    let skeletonsHTML = "";
+    for (let i = 0; i < count; i++) {
+        skeletonsHTML += `
+            <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line long" style="margin-top: 1rem;"></div>
+                </div>
+            </div>
+        `;
+    }
+    gridAnuncios.innerHTML = skeletonsHTML;
+}
+
+// Mock da função do Supabase (Substitua pela sua integração real com o client do Supabase)
+async function fetchAnunciosDoSupabase() {
+    // Exemplo: const { data, error } = await supabase.from('anuncios').select('*');
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve([
+                {
+                    titulo: "Cafeteria & Confeitaria Artesanal",
+                    descricao: "Venha saborear os melhores cafés especiais e bolos caseiros da região com 15% de desconto.",
+                    categoria: "Gastronomia",
+                    imagem: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80",
+                    link: "#"
+                },
+                {
+                    titulo: "Studio de Fitness & Saúde",
+                    descricao: "Transforme sua rotina com treinos personalizados e acompanhamento profissional de ponta.",
+                    categoria: "Bem-estar",
+                    imagem: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80",
+                    link: "#"
+                },
+                {
+                    titulo: "Auto Mecânica Especializada",
+                    descricao: "Revisão completa, troca de óleo e diagnósticos computadorizados para o seu veículo.",
+                    categoria: "Serviços",
+                    imagem: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80",
+                    link: "#"
+                }
+            ]);
+        }, 1000); // Simula 1 segundo de rede
+    });
+}
+</script>
+
+        <!-- SEÇÃO PROMOÇÕES -->
+        <section id="promocoes">
+            <h2>🔥 Promoções em Destaque</h2>
+            <p class="section-description">As melhores oportunidades e descontos válidos esta semana no Garavelo.</p>
+            
+            <div class="promo-cards-container">
+                <div class="promo-card">
+                    <h3>30% OFF em Cosméticos</h3>
+                    <p>Na <strong>Alfa Cosméticos</strong>, leve três produtos e pague apenas dois. Aproveite!</p>
+                </div>
+                <div class="promo-card">
+                    <h3>Troca de Óleo e Alinhamento</h3>
+                    <p>Ganhe alinhamento completo na compra de 4 pneus no <strong>Auto Center Mernitus</strong>.</p>
+                </div>
+                <div class="promo-card">
+                    <h3>Cortes e Barba por R$35</h3>
+                    <p>Promoção especial na <strong>Santa Bárbara Barbearia</strong> de segunda a quarta-feira.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CRIAR ANÚNCIO (PROTEGIDADA POR LOGIN COM 3 DADOS + FOTO/FORMULÁRIO) -->
+        <section id="anunciar-secao">
+            <h2>📢 Anuncie seu Negócio</h2>
+            <p class="section-description">Publique sua marca instantaneamente para milhares de moradores da região.</p>
+            
+            <div id="painelProtegido">
+                <!-- Injetado dinamicamente via JS se o usuário estiver logado ou não -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO UTILIDADE PÚBLICA -->
+        <section id="utilidade">
+            <h2>🤝 Utilidade Pública</h2>
+            <div class="promo-cards-container" style="margin-top: 20px;">
+                <div class="utilidade-card">
+                    <h3>Vagas de Emprego</h3>
+                    <p>A <strong>Rede Celular</strong> está contratando atendentes e vendedores com experiência na região.</p>
+                </div>
+                <div class="utilidade-card">
+                    <h3>Campanha de Saúde</h3>
+                    <p>Vacinação aberta no posto de saúde central e farmácias credenciadas do Garavelo.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Portal Garavelo. Todos os direitos reservados ao desenvolvimento comunitário local.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE AUTENTICAÇÃO -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="fecharModal()">&times;</button>
+            <h3 class="modal-title" id="modalTitle">Acessar Portal</h3>
+            
+            <form id="authForm" onsubmit="executarAutenticacao(event)">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" id="emailInput" class="form-control" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="senhaInput" class="form-control" placeholder="Sua senha de acesso" required>
+                </div>
+                <button type="submit" class="btn btn-primary-custom" id="btnSubmitAuth">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE CONEXÃO REAL COM O SUPABASE E GERENCIAMENTO DE UI/UX -->
+    <script>
+        // --- 1. CONFIGURAÇÃO REAL DO SUPABASE ---
+        // Substitua pelas suas credenciais reais do seu painel Supabase
+        const SUPABASE_URL = 'https://SEU-PROJETO.supabase.co';
+        const SUPABASE_ANON_KEY = 'SUA-CHAVE-ANON-AQUI';
+        
+        // Inicializa o cliente Supabase de forma segura
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let modoAuth = 'login'; // 'login' ou 'cadastro'
+        let usuarioAtual = null;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await verificarSessao();
+            await carregarAnunciosReais();
+        });
+
+        // --- 2. SISTEMA DE AUTENTICAÇÃO REAL ---
+        async function verificarSessao() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            usuarioAtual = session ? session.user : null;
+            atualizarInterfaceUsuario();
+        }
+
+        function abrirModal(modo) {
+            modoAuth = modo;
+            const modal = document.getElementById('authModal');
+            const titulo = document.getElementById('modalTitle');
+            const btn = document.getElementById('btnSubmitAuth');
+
+            if (modo === 'login') {
+                titulo.innerText = 'Entrar na sua Conta';
+                btn.innerText = 'Entrar';
+            } else {
+                titulo.innerText = 'Criar Nova Conta';
+                btn.innerText = 'Cadastrar';
+            }
+            modal.classList.add('active');
+        }
+
+        function fecharModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        async function executarAutenticacao(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const senha = document.getElementById('senhaInput').value;
+
+            if (modoAuth === 'login') {
+                const { data, error } = await supabaseClient.auth.signInWithPassword({ email, senha });
+                if (error) {
+                    alert('Erro ao entrar: ' + error.message);
+                } else {
+                    alert('Login realizado com sucesso!');
+                    usuarioAtual = data.user;
+                    fecharModal();
+                    atualizarInterfaceUsuario();
+                }
+            } else {
+                const { data, error } = await supabaseClient.auth.signUp({ email, senha });
+                if (error) {
+                    alert('Erro no cadastro: ' + error.message);
+                } else {
+                    alert('Cadastro realizado! Verifique seu e-mail ou faça login.');
+                    fecharModal();
+                }
+            }
+        }
+
+        async function fazerLogout() {
+            await supabaseClient.auth.signOut();
+            usuarioAtual = null;
+            alert('Você saiu da sua conta.');
+            atualizarInterfaceUsuario();
+        }
+
+        function atualizarInterfaceUsuario() {
+            const containerAcoes = document.getElementById('userActionsContainer');
+            const painelAnunciar = document.getElementById('painelProtegido');
+
+            if (usuarioAtual) {
+                // Topo com Badge de usuário logado
+                containerAcoes.innerHTML = `
+                    <div class="user-badge">
+                        <i class="fas fa-user-circle"></i> ${usuarioAtual.email}
+                    </div>
+                    <button class="btn btn-login" onclick="fazerLogout()">Sair</button>
+                `;
+
+                // Formulário de Anúncios Reais liberado (3 campos principais: Título, Descrição, Link/Imagem)
+                painelAnunciar.innerHTML = `
+                    <div class="dashboard-anunciar">
+                        <h3 style="margin-bottom: 20px; color: var(--dark-text);"><i class="fas fa-plus-circle" style="color: var(--primary-color);"></i> Publicar Novo Anúncio</h3>
+                        <form id="formNovoAnuncio" onsubmit="enviarAnuncioReal(event)">
+                            <div class="form-group">
+                                <label>Título do Negócio / Anúncio</label>
+                                <input type="text" id="anuncioTitulo" class="form-control" placeholder="Ex: Oficina Mecânica Garavelo" required>
                             </div>
-                            <div class="input-group">
-                                <label for="auth-whatsapp">WhatsApp Comercial</label>
-                                <input type="tel" id="auth-whatsapp" placeholder="(62) 99999-9999" required>
+                            <div class="form-group">
+                                <label>Descrição dos Serviços ou Produtos</label>
+                                <textarea id="anuncioDesc" class="form-control" placeholder="Conte o que sua empresa oferece..." required></textarea>
                             </div>
-                            <div class="input-group">
-                                <label for="auth-pin">Código PIN de Acesso (4 dígitos)</label>
-                                <input type="password" id="auth-pin" maxlength="4" placeholder="••••" required>
+                            <div class="form-group">
+                                <label>URL da Imagem Ilustrativa (Link da Foto)</label>
+                                <input type="url" id="anuncioImg" class="form-control" placeholder="https://exemplo.com/sua-foto.jpg" required>
                             </div>
-                            <button type="submit" class="btn-primary-glow">Acessar Painel & Criar Anúncio</button>
+                            <button type="submit" class="btn btn-primary-custom">Publicar Anúncio Agora</button>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                `;
+            } else {
+                // Topo padrão de visitantes
+                containerAcoes.innerHTML = `
+                    <button class="btn btn-login" onclick="abrirModal('login')"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+                    <button class="btn btn-cadastrar" onclick="abrirModal('cadastro')"><i class="fas fa-user-plus"></i> Cadastre-se</button>
+                `;
 
+                // Bloqueio de anúncio exigindo login prévio
+                painelAnunciar.innerHTML = `
+                    <div class="lock-notice">
+                        <i class="fas fa-lock"></i>
+                        <h3 style="margin-bottom: 10px; color: var(--dark-text);">Área restrita para anunciantes</h3>
+                        <p style="color: #64748b; margin-bottom: 20px;">Você precisa estar conectado em uma conta para cadastrar e gerenciar anúncios reais no portal.</p>
+                        <button class="btn btn-primary-custom" style="width: auto; margin: 0 auto;" onclick="abrirModal('login')">Fazer Login para Anunciar</button>
+                    </div>
+                `;
+            }
+        }
+
+        // --- 3. BANCO DE DADOS: CRIAR E CARREGAR ANÚNCIOS REAIS ---
+        async function enviarAnuncioReal(e) {
+            e.preventDefault();
+            const titulo = document.getElementById('anuncioTitulo').value;
+            const descricao = document.getElementById('anuncioDesc').value;
+            const imagem = document.getElementById('anuncioImg').value;
+
+            // Insere na tabela 'anuncios' do Supabase
+            const { data, error } = await supabaseClient
+                .from('anuncios')
+                .insert([
+                    { titulo: titulo, descricao: descricao, imagem_url: imagem, user_id: usuarioAtual.id }
+                ]);
+
+            if (error) {
+                alert('Erro ao salvar anúncio: ' + error.message + '\n(Certifique-se de ter criado a tabela "anuncios" no seu Supabase)');
+            } else {
+                alert('Anúncio publicado com sucesso no banco de dados!');
+                document.getElementById('formNovoAnuncio').reset();
+                await carregarAnunciosReais();
+                window.location.href = '#parceiros';
+            }
+        }
+
+        async function carregarAnunciosReais() {
+            const grid = document.getElementById('gridAnuncios');
+            
+            // Dados estáticos iniciais de parceiros de alta relevância
+            let conteudoHTML = `
+                <div class="anuncio-item">
+                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" class="anuncio-img" alt="Peixaria">
+                    <div class="anuncio-content">
+                        <div>
+                            <h3>Zé do Peixe - Peixaria</h3>
+                            <p>O melhor e mais fresco pescado da região! Qualidade e tradição garantida no Garavelo.</p>
+                        </div>
+                        <span class="tag-parceiro">Parceiro Gold</span>
+                    </div>
+                </div>
+                <div class="anuncio-item">
+                    <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=600&q=80" class="anuncio-img" alt="Supermercado">
+                    <div class="anuncio-content">
+                        <div>
+                            <h3>Supermercado Tatico</h3>
+                            <p>Variedade e economia para sua casa. Encontre tudo o que precisa em um só lugar.</p>
+                        </div>
+                        <span class="tag-parceiro">Super Destaque</span>
+                    </div>
+                </div>
+                <div class="anuncio-item">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" class="anuncio-img" alt="Subway">
+                    <div class="anuncio-content">
+                        <div>
+                            <h3>Subway Garavelo</h3>
+                            <p>Montamos seu lanche na hora! Ingredientes frescos e saudáveis todos os dias.</p>
+                        </div>
+                        <span class="tag-parceiro">Alimentação</span>
+                    </div>
+                </div>
+            `;
+
+            // Busca os anúncios dinâmicos reais cadastrados no Supabase
+            const { data: anunciosDB, error } = await supabaseClient
+                .from('anuncios')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (!error && anunciosDB && anunciosDB.length > 0) {
+                anunciosDB.forEach(anuncio => {
+                    conteudoHTML += `
+                        <div class="anuncio-item">
+                            <img src="${anuncio.imagem_url}" class="anuncio-img" alt="Imagem do Anúncio" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80'">
+                            <div class="anuncio-content">
+                                <div>
+                                    <h3>${anuncio.titulo}</h3>
+                                    <p>${anuncio.descricao}</p>
+                                </div>
+                                <span class="tag-parceiro">Anúncio Real</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            grid.innerHTML = conteudoHTML;
+        }
+    </script>
 </body>
 </html>
